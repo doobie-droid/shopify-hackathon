@@ -61,43 +61,43 @@ body {
   align-items: center;
 
   &__searchbox {
-    border-radius: 0.8rem;
-    font-size: var(--medium-font-size);
-    line-height: var(--large-line-height);
-    letter-spacing: var(--default-letter-spacing);
-    border: 1px solid var(--color-stroke-200);
-    background-color: var(--color-grey-200);
-    padding: 0.8rem;
     display: flex;
     align-items: center;
-    min-width: 32rem;
 
     &--input {
-      border: none;
-      outline: none;
+      border-radius: 0.8rem;
+      font-size: var(--medium-font-size);
+      line-height: var(--large-line-height);
+      letter-spacing: var(--default-letter-spacing);
+      border: 1px solid var(--color-stroke-200);
       background-color: var(--color-grey-200);
+      min-width: 32rem;
+      outline: none;
       font-weight: 400;
       color: var(--color-font-light);
+      padding: 0.8rem;
+      padding-left: 3.5rem;
 
       &::placeholder {
         color: var(--color-grey-100);
       }
-    }
 
-    &:hover {
-      border: 1px solid var(--color-stroke-100);
-    }
+      &:hover {
+        border: 1px solid var(--color-stroke-100);
+      }
 
-    &:focus,
-    &:active {
-      border: 1px solid white;
+      &:focus,
+      &:active {
+        border: 1px solid white;
+      }
     }
 
     &--icon {
       color: var(--color-grey-100);
       margin-left: 0.8rem;
-      margin-right: 1rem;
-      height: 1.5rem;
+      margin-right: -2.5rem;
+      z-index: 10;
+      height: 1.75rem;
       width: 1.5rem;
     }
   }
@@ -133,14 +133,19 @@ body {
       &:active {
         background-color: var(--color-grey-50);
       }
+
+      &:focus {
+        outline: none;
+        border: 2px solid var(--color-state-focused);
+      }
     }
 
     .info {
       display: flex;
       background-color: var(--color-grey-200);
       align-items: center;
-      border-radius: 0.5rem;
       border-radius: 0.75rem;
+      border: 2px solid transparent;
 
       &:hover {
         background-color: var(--color-grey-100);
@@ -149,6 +154,11 @@ body {
       &:focus,
       &:active {
         background-color: var(--color-grey-50);
+      }
+
+      &:focus {
+        outline: none;
+        border: 2px solid var(--color-state-focused);
       }
 
       .profilename {

@@ -55,33 +55,33 @@ body {
   justify-content: space-between;
   align-items: center; }
   .header__searchbox {
-    border-radius: 0.8rem;
-    font-size: var(--medium-font-size);
-    line-height: var(--large-line-height);
-    letter-spacing: var(--default-letter-spacing);
-    border: 1px solid var(--color-stroke-200);
-    background-color: var(--color-grey-200);
-    padding: 0.8rem;
     display: flex;
-    align-items: center;
-    min-width: 32rem; }
+    align-items: center; }
     .header__searchbox--input {
-      border: none;
-      outline: none;
+      border-radius: 0.8rem;
+      font-size: var(--medium-font-size);
+      line-height: var(--large-line-height);
+      letter-spacing: var(--default-letter-spacing);
+      border: 1px solid var(--color-stroke-200);
       background-color: var(--color-grey-200);
+      min-width: 32rem;
+      outline: none;
       font-weight: 400;
-      color: var(--color-font-light); }
+      color: var(--color-font-light);
+      padding: 0.8rem;
+      padding-left: 3.5rem; }
       .header__searchbox--input::placeholder {
         color: var(--color-grey-100); }
-    .header__searchbox:hover {
-      border: 1px solid var(--color-stroke-100); }
-    .header__searchbox:focus, .header__searchbox:active {
-      border: 1px solid white; }
+      .header__searchbox--input:hover {
+        border: 1px solid var(--color-stroke-100); }
+      .header__searchbox--input:focus, .header__searchbox--input:active {
+        border: 1px solid white; }
     .header__searchbox--icon {
       color: var(--color-grey-100);
       margin-left: 0.8rem;
-      margin-right: 1rem;
-      height: 1.5rem;
+      margin-right: -2.5rem;
+      z-index: 10;
+      height: 1.75rem;
       width: 1.5rem; }
   .header__profile {
     display: flex;
@@ -106,16 +106,22 @@ body {
         background-color: var(--color-grey-100); }
       .header__profile .notification:focus, .header__profile .notification:active {
         background-color: var(--color-grey-50); }
+      .header__profile .notification:focus {
+        outline: none;
+        border: 2px solid var(--color-state-focused); }
     .header__profile .info {
       display: flex;
       background-color: var(--color-grey-200);
       align-items: center;
-      border-radius: 0.5rem;
-      border-radius: 0.75rem; }
+      border-radius: 0.75rem;
+      border: 2px solid transparent; }
       .header__profile .info:hover {
         background-color: var(--color-grey-100); }
       .header__profile .info:focus, .header__profile .info:active {
         background-color: var(--color-grey-50); }
+      .header__profile .info:focus {
+        outline: none;
+        border: 2px solid var(--color-state-focused); }
       .header__profile .info .profilename {
         padding: 0.8rem; }
       .header__profile .info .avatar {
