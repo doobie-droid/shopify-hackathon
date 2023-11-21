@@ -43,7 +43,8 @@ body {
   font-size: var(--default-font-size);
   line-height: var(--default-line-height);
   letter-spacing: var(--default-letter-spacing);
-  font-family: "Inter", sans-serif; }
+  font-family: "Inter", sans-serif;
+  background-color: var(--color-background); }
 
 .header {
   background-color: var(--color-grey-300);
@@ -53,10 +54,12 @@ body {
   color: var(--color-grey-100);
   display: flex;
   justify-content: space-between;
-  align-items: center; }
+  align-items: center;
+  min-width: fit-content; }
   .header__searchbox {
     display: flex;
-    align-items: center; }
+    align-items: center;
+    flex: .5; }
     .header__searchbox--input {
       border-radius: 0.8rem;
       font-size: var(--medium-font-size);
@@ -64,7 +67,8 @@ body {
       letter-spacing: var(--default-letter-spacing);
       border: 1px solid var(--color-stroke-200);
       background-color: var(--color-grey-200);
-      min-width: 32rem;
+      width: 100%;
+      max-width: 48rem;
       outline: none;
       font-weight: 400;
       color: var(--color-font-light);
@@ -130,3 +134,18 @@ body {
         padding: 0.65rem;
         border-radius: 0.75rem;
         background-color: var(--color-green); }
+
+.trialModal {
+  background-color: red;
+  height: 15vh;
+  padding-top: 3rem;
+  padding-bottom: 2rem; }
+  .trialModal .container {
+    background-color: cyan;
+    margin: 0 auto;
+    width: 50vw; }
+  .trialModal__text {
+    background-color: blue;
+    margin: 0 auto; }
+  .trialModal__button {
+    background-color: green; }

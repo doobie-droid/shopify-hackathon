@@ -13,25 +13,28 @@
 <body>
 
     <section class="header">
-        <div class="header__logo" >
+        <div class="header__logo">
 
-            <a href="https://www.shopify.com/" tabindex="1">
+            <a href="https://www.shopify.com/" tabindex="1" aria-label="Visit Shopify.com to use your store">
                 <img src="https://crushingit.tech/hackathon-assets/shopify-icon-desktop.svg" alt="Shopify Logo">
             </a>
 
         </div>
-        <form class="header__searchbox" method="post" action="#">
-            <a href="#" class="header__searchbox--icon" tabindex="3">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 13 14" fill="none">
+        <form role="search" class="header__searchbox" method="post" action="#">
+            <a href="#" role="button" class="header__searchbox--icon" tabindex="3" aria-label="Search">
+                <svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 13 14" fill="none">
                     <path fill-rule="evenodd" clip-rule="evenodd"
                         d="M8.82264 10.3833C7.89957 11.0841 6.74835 11.5 5.5 11.5C2.46243 11.5 0 9.03757 0 6C0 2.96243 2.46243 0.5 5.5 0.5C8.53757 0.5 11 2.96243 11 6C11 7.24835 10.5841 8.39957 9.8833 9.32264L12.7803 12.2197C13.0732 12.5126 13.0732 12.9874 12.7803 13.2803C12.4874 13.5732 12.0126 13.5732 11.7197 13.2803L8.82264 10.3833ZM9.5 6C9.5 8.20914 7.70914 10 5.5 10C3.29086 10 1.5 8.20914 1.5 6C1.5 3.79086 3.29086 2 5.5 2C7.70914 2 9.5 3.79086 9.5 6Z"
                         fill="currentcolor" />
                 </svg>
             </a>
-            <input class="header__searchbox--input" type="text" placeholder="Search" tabindex="2">
+            <input class="header__searchbox--input" type="search" placeholder="Search" tabindex="2" id="search"
+                aria-label="search Shopify Website">
+
+
         </form>
         <div class="header__profile">
-            <div class="notification" tabindex="4">
+            <div class="notification" tabindex="4" aria-label="Notifications Menu">
                 <div class="notification__icon">
                     <svg viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" clip-rule="evenodd"
@@ -40,14 +43,21 @@
                     </svg>
                 </div>
             </div>
-            <div class="info" tabindex="5">
+            <div class="info" tabindex="5" aria-label="Profile Settings">
                 <div class="profilename">Davii Collections</div>
                 <div class="avatar">DC</div>
             </div>
         </div>
 
     </section>
-    <section class="trialModal"></section>
+    <section class="trialModal">
+        <div class="container">
+            <p class="trialModal__text">Extend your trial for $1/month for 3 months on select plans.</p>
+            <button class="trialModal__button">Select a plan</button>
+        </div>
+
+
+    </section>
     <section class="setup"></section>
     <script src="./app.js"></script>
 </body>
