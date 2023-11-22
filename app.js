@@ -11,7 +11,7 @@ const modalCloserFunction = function () {
 closeModal.addEventListener("click", modalCloserFunction);
 
 //This is the functionality used for controlling the accordion menu
-let  openAccordions = [];
+let openAccordions = [];
 class Accordion {
   constructor(domNode) {
     this.controllerElement = domNode;
@@ -21,7 +21,15 @@ class Accordion {
 
     this.controlledElementId =
       this.controllerElementButton.getAttribute("aria-controls");
+
     this.controlledElement = document.getElementById(this.controlledElementId);
+
+    const controlledIndex = this.controlledElementId.charAt(
+      this.controlledElementId.length - 1
+    );
+    this.controlledElementImage = document.querySelector(
+      `#accordion-image-${controlledIndex}`
+    );
 
     this.open =
       this.controllerElementButton.getAttribute("aria-expanded") === "true";
@@ -48,9 +56,19 @@ class Accordion {
     this.controllerElementButton.setAttribute("aria-expanded", `${open}`);
     if (open) {
       this.controlledElement.removeAttribute("hidden");
+      this.controlledElement.nextElementSibling.removeAttribute("hidden");
+      this.controlledElement.parentElement.parentElement.classList.add(
+        "accordion-card"
+      );
+      this.controlledElementImage.removeAttribute("hidden");
       this.closeOtherOpenAccordions();
     } else {
       this.controlledElement.setAttribute("hidden", "");
+      this.controlledElement.nextElementSibling.setAttribute("hidden", "");
+      this.controlledElement.parentElement.parentElement.classList.remove(
+        "accordion-card"
+      );
+      this.controlledElementImage.setAttribute("hidden", "");
     }
   }
 
@@ -86,5 +104,3 @@ allAccordions.forEach((accordionElement, index) => {
     openAccordions.push(accordion);
   }
 });
-
-

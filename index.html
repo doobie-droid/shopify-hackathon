@@ -11,14 +11,11 @@
 </head>
 
 <body>
-
     <section class="header">
         <div class="header__logo">
-
             <a href="https://www.shopify.com/" tabindex="1" aria-label="Visit Shopify.com to use your store">
                 <img src="https://crushingit.tech/hackathon-assets/shopify-icon-desktop.svg" alt="Shopify Logo">
             </a>
-
         </div>
         <form role="search" class="header__searchbox" method="post" action="#">
             <a href="#" role="button" class="header__searchbox--icon" tabindex="3" aria-label="Search">
@@ -30,8 +27,6 @@
             </a>
             <input class="header__searchbox--input" type="search" placeholder="Search" tabindex="2" id="search"
                 aria-label="search Shopify Website">
-
-
         </form>
         <div class="header__profile">
             <div class="notification" tabindex="4" aria-label="Notifications Menu">
@@ -48,18 +43,16 @@
                 <div class="avatar">DC</div>
             </div>
         </div>
-
     </section>
     <section class="trialModal">
-        <div class="container" id="alert-dialog" role="alertdialog" aria-labelledby="dialoglabel"
+        <div class="container" id="alert-dialog" role="" aria-labelledby="dialoglabel"
             aria-describedby="dialogdescribe">
             <h2 id="dialoglabel" hidden>Subscription </h2>
             <div id="dialogdescribe" class="trialModal__text">
                 <p>Extend your trial for $1/month for 3 months on select
-                    plans.</p>
+                    plans.
+                </p>
             </div>
-
-
             <a href="https://www.shopify.com/pricing" role="button" class="trialModal__button" id="select-plan">Select a
                 plan</a>
             <button type="button" aria-label="Close" class="trialModal__button__close" id="close-modal">
@@ -70,10 +63,7 @@
                         fill="currentcolor" />
                 </svg>
             </button>
-
         </div>
-
-
     </section>
     <section class="setup">
         <details class="container">
@@ -83,124 +73,164 @@
                 <div class="setup__guide--progressbar">1/5 completed</div>
                 <div role="presentation" class="setup__guide--dropdown"></div>
             </summary>
-            <div class="setup__stage__group">
-                <div class="setup__stage">Step 1</div>
-                <div class="setup__stage">Step 2</div>
-                <div class="setup__stage">Step 3</div>
-                <div class="setup__stage">Step 4</div>
-                <div class="setup__stage">Step 5</div>
-            </div>
-            <div id="accordionGroup" class="accordion">
-                <h3>
-                    <button type="button" aria-expanded="true" class="accordion-trigger" aria-controls="sect1"
-                        id="accordion1id">
-                        <span class="accordion-title">
-                            Customize Your Online Store
-                            <span class="accordion-icon"></span>
-                        </span>
-                    </button>
-                </h3>
-                <div id="sect1" role="region" aria-labelledby="accordion1id" class="accordion-panel">
-                    <div>
-                        <p>Choose a theme and add your logo, colors, and images to reflect your brand.
-                            <a href="https://help.shopify.com/en/manual/online-store/themes/customizing-themes">Learn
-                                More</a>
-                        </p>
-
+            <div id="accordionGroup" class="accordion ">
+                <div class="accordion-card">
+                    <div class="accordion-text">
+                        <h3>
+                            <button type="button" aria-expanded="true" class="accordion-trigger " aria-controls="sect1"
+                                id="accordion1id">
+                                <span class="accordion-title">
+                                    Customize Your Online Store
+                                    <span class="accordion-icon">w</span>
+                                </span>
+                            </button>
+                        </h3>
+                        <div id="sect1" role="region" aria-labelledby="accordion1id" class="accordion-panel ">
+                            <div>
+                                <p>Choose a theme and add your logo, colors, and images to reflect your brand.
+                                    <a href="https://help.shopify.com/en/manual/online-store/themes/customizing-themes">Learn
+                                        More</a>
+                                </p>
+                            </div>
+                        </div>
+                        <div role="region" aria-labelledby="accordion1id">
+                            <button class="accordion-panel-button">Customize theme</button>
+                        </div>
                     </div>
-
-                </div>
-                <h3>
-                    <button type="button" aria-expanded="false" class="accordion-trigger" aria-controls="sect2"
-                        id="accordion2id">
-                        <span class="accordion-title">
-                            Add your first Product
-                            <span class="accordion-icon"></span>
-                        </span>
-                    </button>
-                </h3>
-                <div id="sect2" role="region" aria-labelledby="accordion2id" class="accordion-panel" hidden="">
-                    <div>
-                        <p>Write a description, add photos, and set pricing for the products you plan to sell.
-                            <a href="https://help.shopify.com/en/manual/products/add-update-products">Learn More</a>
-                        </p>
-
-                        <button>Add Product</button>
-                        <button>Import Product</button>
-
+                    <div class="accordion-image" id="accordion-image-1">
+                        <img src="https://crushingit.tech/hackathon-assets/customise-store.png"
+                            alt="Picture showing customization of a store">
                     </div>
                 </div>
-                <h3>
-                    <button type="button" aria-expanded="false" class="accordion-trigger" aria-controls="sect3"
-                        id="accordion3id">
-                        <span class="accordion-title">
-                            Add a custom domain
-                            <span class="accordion-icon"></span>
-                        </span>
-                    </button>
-                </h3>
-                <div id="sect3" role="region" aria-labelledby="accordion3id" class="accordion-panel" hidden="">
-                    <div>
-                        <p>
-                            Your current domain is 222219.myshopify.com but you can add a custom domain to help
-                            customers find
-                            your
-                            online store.
-
-                            <a href="https://help.shopify.com/en/manual/domains">Learn more</a>
-                        </p>
-                        <button>Add domain</button>
+                <div>
+                    <div class="accordion-text">
+                        <h3>
+                            <button type="button" aria-expanded="false" class="accordion-trigger" aria-controls="sect2"
+                                id="accordion2id">
+                                <span class="accordion-title">
+                                    Add your first Product
+                                    <span class="accordion-icon"></span>
+                                </span>
+                            </button>
+                        </h3>
+                        <div id="sect2" role="region" aria-labelledby="accordion2id" class="accordion-panel" hidden="">
+                            <div>
+                                <p>Write a description, add photos, and set pricing for the products you plan to sell.
+                                    <a href="https://help.shopify.com/en/manual/products/add-update-products">Learn
+                                        More</a>
+                                </p>
+                            </div>
+                        </div>
+                        <div hidden>
+                            <button class="accordion-panel-button">Add Product</button>
+                            <button>Import Product</button>
+                        </div>
+                    </div>
+                    <div hidden class="accordion-image" id="accordion-image-2">
+                        <img src="https://crushingit.tech/hackathon-assets/product.png"
+                            alt="Picture showing product examples">
                     </div>
                 </div>
-                <h3>
-                    <button type="button" aria-expanded="false" class="accordion-trigger" aria-controls="sect4"
-                        id="accordion4id">
-                        <span class="accordion-title">
-                            Name your store
-                            <span class="accordion-icon"></span>
-                        </span>
-                    </button>
-                </h3>
-                <div id="sect4" role="region" aria-labelledby="accordion4id" class="accordion-panel" hidden="">
-                    <div>
-                        <p>
-                            Your temporary store name is currently Davii collections. The store name appears in your
-                            admin and
-                            your online store.
-
-                            <a
-                                href="https://help.shopify.com/manual/intro-to-shopify/initial-setup/setup-business-settings#set-or-change-your-online-store-name-and-legal-business-name">Learn
-                                more</a>
-                        </p>
-                        <button>Add domain</button>
+                <div>
+                    <div class="accordion-text">
+                        <h3>
+                            <button type="button" aria-expanded="false" class="accordion-trigger" aria-controls="sect3"
+                                id="accordion3id">
+                                <span class="accordion-title">
+                                    Add a custom domain
+                                    <span class="accordion-icon"></span>
+                                </span>
+                            </button>
+                        </h3>
+                        <div id="sect3" role="region" aria-labelledby="accordion3id" class="accordion-panel" hidden="">
+                            <div>
+                                <p>
+                                    Your current domain is 222219.myshopify.com but you can add a custom domain to help
+                                    customers find
+                                    your
+                                    online store.
+                                    <a href="https://help.shopify.com/en/manual/domains">Learn more</a>
+                                </p>
+                            </div>
+                        </div>
+                        <div hidden>
+                            <button class="accordion-panel-button">Add domain</button>
+                        </div>
+                    </div>
+                    <div hidden class="accordion-image" id="accordion-image-3">
+                        <img src="https://crushingit.tech/hackathon-assets/website.png"
+                            alt="Picture showing web browser">
                     </div>
                 </div>
-                <h3>
-                    <button type="button" aria-expanded="false" class="accordion-trigger" aria-controls="sect5"
-                        id="accordion5id">
-                        <span class="accordion-title">
-                            Set up a payment provider
-                            <span class="accordion-icon"></span>
-                        </span>
-                    </button>
-                </h3>
-                <div id="sect5" role="region" aria-labelledby="accordion5id" class="accordion-panel" hidden="">
-                    <div>
-                        <p>
-                            Choose a payment provider to start accepting payments. You’ll need to create an account
-                            with the
-                            payment provider and set it up with your Shopify store.
-
-                            <a href="https://help.shopify.com/en/manual/payments">Learn more</a>
-                        </p>
-                        <button>Add domain</button>
+                <div>
+                    <div class="accordion-text">
+                        <h3>
+                            <button type="button" aria-expanded="false" class="accordion-trigger" aria-controls="sect4"
+                                id="accordion4id">
+                                <span class="accordion-title">
+                                    Name your store
+                                    <span class="accordion-icon"></span>
+                                </span>
+                            </button>
+                        </h3>
+                        <div id="sect4" role="region" aria-labelledby="accordion4id" class="accordion-panel" hidden="">
+                            <div>
+                                <p>
+                                    Your temporary store name is currently Davii collections. The store name appears in
+                                    your
+                                    admin and
+                                    your online store.
+                                    <a
+                                        href="https://help.shopify.com/manual/intro-to-shopify/initial-setup/setup-business-settings#set-or-change-your-online-store-name-and-legal-business-name">Learn
+                                        more</a>
+                                </p>
+                            </div>
+                        </div>
+                        <div hidden>
+                            <button class="accordion-panel-button">Name store</button>
+                        </div>
                     </div>
+                    <div hidden class="accordion-image" id="accordion-image-4">
+                        <img src="https://crushingit.tech/hackathon-assets/name-store.png"
+                            alt="Picture showing examples of store names">
+                    </div>
+                </div>
+                <div>
+                    <div class="accordion-text">
+
+
+                        <h3>
+                            <button type="button" aria-expanded="false" class="accordion-trigger" aria-controls="sect5"
+                                id="accordion5id">
+                                <span class="accordion-title">
+                                    Set up a payment provider
+                                    <span class="accordion-icon"></span>
+                                </span>
+                            </button>
+                        </h3>
+                        <div id="sect5" role="region" aria-labelledby="accordion5id" class="accordion-panel" hidden="">
+                            <div>
+                                <p>
+                                    Choose a payment provider to start accepting payments. You’ll need to create an
+                                    account
+                                    with the
+                                    payment provider and set it up with your Shopify store.
+                                    <a href="https://help.shopify.com/en/manual/payments">Learn more</a>
+                                </p>
+                            </div>
+                        </div>
+                        <div hidden>
+                            <button class="accordion-panel-button">Set up payment</button>
+                        </div>
+                    </div>
+                     <div hidden class="accordion-image" id="accordion-image-5">
+                         <img src="https://crushingit.tech/hackathon-assets/payment.png"
+                             alt="Picture showing credit cards">
+                     </div>
                 </div>
             </div>
         </details>
-
     </section>
-
     <script src="./app.js"></script>
 </body>
 

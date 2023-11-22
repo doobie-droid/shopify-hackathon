@@ -11,6 +11,18 @@ body {
 html {
   font-size: 62.5%; }
 
+button {
+  /* This resets default button styles */
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: inherit;
+  cursor: pointer;
+  outline: none; }
+
 :root {
   --main-color: #3498db;
   --background-color: #ecf0f1;
@@ -32,6 +44,10 @@ html {
   --color-background: #f1f1f1;
   --color-green: #36fba1;
   --color-special-1: #323232;
+  --color-special-2: #f3f3f3;
+  --color-special-3: #404040;
+  --color-special-4: #2a2a2a;
+  --color-special-5: #2b2b2b;
   --default-font-size: 1.2rem;
   --medium-font-size: 1.3rem;
   --default-letter-spacing: 0%;
@@ -218,7 +234,7 @@ body {
     line-height: var(--large-line-height);
     font-weight: var(--semibold-font-weight);
     width: 100%;
-    margin-bottom: .4rem; }
+    margin-bottom: 0.4rem; }
   .setup__guide--text {
     font-size: var(--medium-font-size);
     font-weight: var(--regular-font-weight);
@@ -254,13 +270,75 @@ body {
       outline: none;
       border: 2px solid var(--color-state-focused); }
 
-.setup__stage__group {
-  background-color: green;
+.setup .accordion {
   width: 100%; }
-
-.setup__stage {
-  background-color: purple;
-  width: 100%; }
+  .setup .accordion-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; }
+  .setup .accordion-image {
+    width: 15.6rem;
+    height: 12rem;
+    right: 0;
+    top: 0; }
+  .setup .accordion-trigger {
+    color: var(--color-font-dark);
+    font-size: var(--medium-font-size);
+    line-height: var(--large-line-height);
+    font-weight: var(--semibold-font-weight); }
+  .setup .accordion-icon {
+    width: 1.5rem;
+    height: 1.5rem; }
+  .setup .accordion-title {
+    padding-left: 2rem; }
+  .setup .accordion-card {
+    background-color: var(--color-special-2);
+    border-radius: 1.5rem;
+    padding-top: 0.8rem;
+    padding-bottom: 1.2rem;
+    padding-left: 2rem;
+    padding-right: 0.8rem;
+    display: flex;
+    align-items: stretch; }
+    .setup .accordion-card .accordion-title {
+      padding-left: 0; }
+  .setup .accordion-panel {
+    color: var(--color-font-mid);
+    font-weight: var(--medium-font-weight);
+    font-size: var(--medium-font-size);
+    line-height: var(--large-line-height);
+    width: 100%; }
+    .setup .accordion-panel a {
+      color: var(--color-state-focused);
+      font-size: var(--large-font-size);
+      font-weight: var(--medium-font-weight);
+      text-decoration: none; }
+    .setup .accordion-panel a:visited {
+      text-decoration: none; }
+    .setup .accordion-panel-button {
+      background-color: var(--color-special-3);
+      color: var(--color-font-light);
+      border-radius: 0.6rem;
+      font-size: var(--small-font-size);
+      line-height: var(--small-line-height);
+      letter-spacing: var(--default-letter-spacing);
+      font-weight: var(--semibold-font-weight);
+      border-top: 1.5px solid var(--color-stroke-200);
+      border-left: 1.5px solid var(--color-stroke-200);
+      border-right: 1.5px solid var(--color-stroke-200);
+      border-bottom: none;
+      padding: 0.3rem 0.6rem;
+      box-shadow: 0 2px 0px 0px black, 0 1px 0 1.5px #212121, 0 0 0 1.5px #212121; }
+    .setup .accordion-panel-button:hover {
+      background-color: var(--color-special-4); }
+    .setup .accordion-panel-button:active {
+      outline: none;
+      background-color: var(--color-special-5);
+      box-shadow: inset 0 3px 0 0 black, 0 0 0 1.5px #212121;
+      transition: box-shadow 0.5s ease-in-out; }
+    .setup .accordion-panel-button:focus {
+      background-color: var(--color-special-3);
+      box-shadow: inset 0 0 0 1.5px #212121, 0 0 0 3px white, 0 0 0 5px #0056c6; }
 
 details[open] .setup__guide--dropdown {
   transform: rotate(180deg);
