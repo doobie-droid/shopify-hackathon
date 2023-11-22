@@ -8,84 +8,172 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="./app.css" />
+    <script src="./app.js" defer></script>
 </head>
 
 <body>
+    <div class="page">
 
-    <section class="header">
-        <div class="header__logo">
+        <header role="banner">
+            <div class="title">Mythical University</div>
+            <div class="tagline">Using a Menubar for navigation links</div>
+        </header>
+        <nav aria-label="Mythical University">
+            <ul class="menubar-navigation" role="menubar" aria-label="Mythical University">
+                <li role="none">
+                    <a role="menuitem" href="#home"> Home </a>
+                </li>
+                <li role="none">
+                    <a role="menuitem" aria-haspopup="true" aria-expanded="false" href="#about">
+                        About
+                        <svg xmlns="http://www.w3.org/2000/svg" class="down" width="12" height="9" viewBox="0 0 12 9">
+                            <polygon points="1 0, 11 0, 6 8"></polygon>
+                        </svg>
+                    </a>
+                    <ul role="menu" aria-label="About">
+                        <li role="none">
+                            <a role="menuitem" href="#overview">Overview</a>
+                        </li>
+                        <li role="none">
+                            <a role="menuitem" href="#administration">Administration</a>
+                        </li>
+                        <li role="none">
+                            <a role="menuitem" aria-haspopup="true" aria-expanded="false" href="#facts">
+                                Facts
+                                <svg xmlns="http://www.w3.org/2000/svg" class="right" width="9" height="12"
+                                    viewBox="0 0 9 12">
+                                    <polygon points="0 1, 0 11, 8 6"></polygon>
+                                </svg>
+                            </a>
+                            <ul role="menu" aria-label="Facts">
+                                <li role="none">
+                                    <a role="menuitem" href="#history">History</a>
+                                </li>
+                                <li role="none">
+                                    <a role="menuitem" href="#current-statistics">Current Statistics</a>
+                                </li>
+                                <li role="none">
+                                    <a role="menuitem" href="#awards">Awards</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li role="none">
+                            <a role="menuitem" aria-haspopup="true" aria-expanded="false" href="#campus-tours">
+                                Campus Tours
+                                <svg xmlns="http://www.w3.org/2000/svg" class="right" width="9" height="12"
+                                    viewBox="0 0 9 12">
+                                    <polygon points="0 1, 0 11, 8 6"></polygon>
+                                </svg>
+                            </a>
+                            <ul role="menu" aria-label="Campus Tours">
+                                <li role="none">
+                                    <a role="menuitem" href="#for-prospective-students">For prospective students</a>
+                                </li>
+                                <li role="none">
+                                    <a role="menuitem" href="#for-alumni">For alumni</a>
+                                </li>
+                                <li role="none">
+                                    <a role="menuitem" href="#for-visitors">For visitors</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li role="none">
+                    <a role="menuitem" aria-haspopup="true" aria-expanded="false" href="#admissions">
+                        Admissions
+                        <svg xmlns="http://www.w3.org/2000/svg" class="down" width="12" height="9" viewBox="0 0 12 9">
+                            <polygon points="1 0, 11 0, 6 8"></polygon>
+                        </svg>
+                    </a>
+                    <ul role="menu" aria-label="Admissions">
+                        <li role="none">
+                            <a role="menuitem" href="#apply">Apply</a>
+                        </li>
+                        <li role="none">
+                            <a role="menuitem" aria-haspopup="true" aria-expanded="false" href="#tuition">
+                                Tuition
+                                <svg xmlns="http://www.w3.org/2000/svg" class="right" width="9" height="12"
+                                    viewBox="0 0 9 12">
+                                    <polygon points="0 1, 0 11, 8 6"></polygon>
+                                </svg>
+                            </a>
+                            <ul role="menu" aria-label="Tuition">
+                                <li role="none">
+                                    <a role="menuitem" href="#undergraduate">Undergraduate</a>
+                                </li>
+                                <li role="none">
+                                    <a role="menuitem" href="#graduate">Graduate</a>
+                                </li>
+                                <li role="none">
+                                    <a role="menuitem" href="#professional-schools">Professional Schools</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li role="none">
+                            <a role="menuitem" href="#sign-up">Sign Up</a>
+                        </li>
+                        <li role="separator"></li>
+                        <li role="none">
+                            <a role="menuitem" href="#visit">Visit</a>
+                        </li>
+                        <li role="none">
+                            <a role="menuitem" href="#photo-tour">Photo Tour</a>
+                        </li>
+                        <li role="none">
+                            <a role="menuitem" href="#connect">Connect</a>
+                        </li>
+                    </ul>
+                </li>
+                <li role="none">
+                    <a role="menuitem" aria-haspopup="true" aria-expanded="false" href="#academics">
+                        Academics
+                        <svg xmlns="http://www.w3.org/2000/svg" class="down" width="12" height="9" viewBox="0 0 12 9">
+                            <polygon points="1 0, 11 0, 6 8"></polygon>
+                        </svg>
+                    </a>
+                    <ul role="menu" id="sub-menu-academics" aria-label="Academics">
+                        <li role="none">
+                            <a role="menuitem" href="#colleges-and-schools">Colleges &amp; Schools</a>
+                        </li>
+                        <li role="none">
+                            <a role="menuitem" href="#programs-of-study">Programs of Study</a>
+                        </li>
+                        <li role="none">
+                            <a role="menuitem" href="#honors-programs">Honors Programs</a>
+                        </li>
+                        <li role="none">
+                            <a role="menuitem" href="#online-courses">Online Courses</a>
+                        </li>
+                        <li role="separator"></li>
+                        <li role="none">
+                            <a role="menuitem" href="#course-explorer">Course Explorer</a>
+                        </li>
+                        <li role="none">
+                            <a role="menuitem" href="#register-for-class">Register for Class</a>
+                        </li>
+                        <li role="none">
+                            <a role="menuitem" href="#academic-calendar">Academic Calendar</a>
+                        </li>
+                        <li role="none">
+                            <a role="menuitem" href="#tanscripts">Transcripts</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
 
-            <a href="https://www.shopify.com/" tabindex="1" aria-label="Visit Shopify.com to use your store">
-                <img src="https://crushingit.tech/hackathon-assets/shopify-icon-desktop.svg" alt="Shopify Logo">
-            </a>
-
-        </div>
-        <form role="search" class="header__searchbox" method="post" action="#">
-            <a href="#" role="button" class="header__searchbox--icon" tabindex="3" aria-label="Search">
-                <svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 13 14" fill="none">
-                    <path fill-rule="evenodd" clip-rule="evenodd"
-                        d="M8.82264 10.3833C7.89957 11.0841 6.74835 11.5 5.5 11.5C2.46243 11.5 0 9.03757 0 6C0 2.96243 2.46243 0.5 5.5 0.5C8.53757 0.5 11 2.96243 11 6C11 7.24835 10.5841 8.39957 9.8833 9.32264L12.7803 12.2197C13.0732 12.5126 13.0732 12.9874 12.7803 13.2803C12.4874 13.5732 12.0126 13.5732 11.7197 13.2803L8.82264 10.3833ZM9.5 6C9.5 8.20914 7.70914 10 5.5 10C3.29086 10 1.5 8.20914 1.5 6C1.5 3.79086 3.29086 2 5.5 2C7.70914 2 9.5 3.79086 9.5 6Z"
-                        fill="currentcolor" />
-                </svg>
-            </a>
-            <input class="header__searchbox--input" type="search" placeholder="Search" tabindex="2" id="search"
-                aria-label="search Shopify Website">
-
-
-        </form>
-        <div class="header__profile">
-            <div class="notification" tabindex="4" aria-label="Notifications Menu">
-                <div class="notification__icon">
-                    <svg viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" clip-rule="evenodd"
-                            d="M7.75203 14.4239L5.3061 14.1427C3.45144 13.9295 2.92542 11.4844 4.52838 10.5274L4.5933 10.4886C5.466 9.96761 6.00045 9.02609 6.00045 8.00969V7.5C6.00045 5.01472 8.01517 3 10.5005 3C12.9857 3 15.0005 5.01472 15.0005 7.5V8.00969C15.0005 9.02609 15.5349 9.96761 16.4076 10.4886L16.4725 10.5274C18.0755 11.4844 17.5495 13.9295 15.6948 14.1427L13.152 14.435V14.8C13.152 16.2912 11.9432 17.5 10.452 17.5C8.96086 17.5 7.75203 16.2912 7.75203 14.8V14.4239ZM11.652 14.5H9.25203V14.8C9.25203 15.4627 9.78929 16 10.452 16C11.1148 16 11.652 15.4627 11.652 14.8V14.5ZM8.50045 13H12.5005L15.5235 12.6525C15.953 12.6032 16.0748 12.0369 15.7036 11.8153L15.6387 11.7766C15.5591 11.7291 15.4815 11.6793 15.4057 11.6273C15.2506 11.521 15.1036 11.4055 14.9651 11.2818C14.9405 11.2598 14.9162 11.2377 14.8922 11.2152C14.0144 10.395 13.5005 9.23833 13.5005 8.00969V7.5C13.5005 5.84315 12.1573 4.5 10.5005 4.5C8.8436 4.5 7.50045 5.84315 7.50045 7.5V8.00969C7.50045 9.23833 6.98651 10.395 6.10871 11.2152C6.08469 11.2377 6.06039 11.2598 6.03583 11.2818C5.89734 11.4055 5.75029 11.521 5.59523 11.6273C5.51945 11.6793 5.44176 11.7291 5.36222 11.7766L5.29729 11.8153C4.9261 12.0369 5.0479 12.6032 5.47739 12.6525L8.50045 13Z"
-                            fill="#fff" />
-                    </svg>
+        <div class="main">
+            <section aria-labelledby="id-page-title">
+                <h1 id="id-page-title" class="page_title">Mythical University</h1>
+                <div class="content">
+                    <p></p>
                 </div>
-            </div>
-            <div class="info" tabindex="5" aria-label="Profile Settings">
-                <div class="profilename">Davii Collections</div>
-                <div class="avatar">DC</div>
-            </div>
+            </section>
         </div>
 
-    </section>
-    <section class="trialModal">
-        <div class="container">
-            <p class="trialModal__text">Extend your trial for $1/month for 3 months on select plans.</p>
-
-            <button class="trialModal__button">Select a plan</button>
-            <button class="trialModal__button__close">
-                <svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        d="M14.4697 15.0303C14.7626 15.3232 15.2374 15.3232 15.5303 15.0303C15.8232 14.7374 15.8232 14.2626 15.5303 13.9697L11.5607 10L15.5303 6.03033C15.8232 5.73744 15.8232 5.26256 15.5303 4.96967C15.2374 4.67678 14.7626 4.67678 14.4697 4.96967L10.5 8.93934L6.53033 4.96967C6.23744 4.67678 5.76256 4.67678 5.46967 4.96967C5.17678 5.26256 5.17678 5.73744 5.46967 6.03033L9.43934 10L5.46967 13.9697C5.17678 14.2626 5.17678 14.7374 5.46967 15.0303C5.76256 15.3232 6.23744 15.3232 6.53033 15.0303L10.5 11.0607L14.4697 15.0303Z"
-                        fill="currentcolor" />
-                </svg>
-
-
-            </button>
-
-        </div>
-
-
-    </section>
-    <section class="setup">
-        <div class="container">
-            <div class="setup__guide">
-                <h4>Setup Guide</h4>
-                <p>Use this personalized guide to get your store up and running.</p>
-            </div>
-            <div class="setup__stage__group">
-                <div class="setup__stage">Step 1</div>
-                <div class="setup__stage">Step 2</div>
-                <div class="setup__stage">Step 3</div>
-                <div class="setup__stage">Step 4</div>
-                <div class="setup__stage">Step 5</div>
-            </div>
-        </div>
-
-    </section>
-    <script src="./app.js"></script>
+        <footer role="contentinfo">Mythical University footer information</footer>
+    </div>
 </body>
 
 </html>
