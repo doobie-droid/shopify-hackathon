@@ -31,6 +31,7 @@ html {
   --color-background-white: #ffffff;
   --color-background: #f1f1f1;
   --color-green: #36fba1;
+  --color-special-1: #323232;
   --default-font-size: 1.2rem;
   --medium-font-size: 1.3rem;
   --default-letter-spacing: 0%;
@@ -164,6 +165,7 @@ body {
     font-weight: var(--medium-font-weight);
     flex: 0.95; }
   .trialModal__button {
+    text-decoration: none;
     font-size: var(--small-font-size);
     line-height: var(--small-line-height);
     font-weight: var(--semibold-font-weight);
@@ -174,9 +176,10 @@ body {
     outline: none;
     border: none;
     cursor: pointer;
-    order: 1; }
+    background-color: var(--color-background-white);
+    color: var(--color-special-1); }
     .trialModal__button:hover {
-      box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1); }
+      box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2); }
   .trialModal__button__close {
     background-color: transparent;
     color: white;
@@ -184,8 +187,7 @@ body {
     filter: grayscale(100%);
     margin-right: 1rem;
     cursor: pointer;
-    border: none;
-    order: 2; }
+    border: none; }
 
 .setup .container {
   background-color: pink;
@@ -196,15 +198,61 @@ body {
   margin: 0 auto;
   width: 56vw;
   padding-left: 1.6rem;
+  padding-right: 1.6rem;
   padding-top: 1.55rem;
   padding-bottom: 1.55rem;
   background-color: var(--color-background-white);
   color: var(--color-font-light);
-  border-radius: 0.8rem; }
+  border-radius: 2rem;
+  position: relative; }
+
+.setup summary {
+  display: block;
+  cursor: pointer; }
 
 .setup__guide {
-  background-color: blue;
-  width: 100%; }
+  width: 100%;
+  color: var(--color-font-dark); }
+  .setup__guide--title {
+    font-size: var(--large-font-size);
+    line-height: var(--large-line-height);
+    font-weight: var(--semibold-font-weight);
+    width: 100%;
+    margin-bottom: .4rem; }
+  .setup__guide--text {
+    font-size: var(--medium-font-size);
+    font-weight: var(--regular-font-weight);
+    line-height: var(--large-line-height);
+    width: 100%;
+    margin-bottom: 1.6rem; }
+  .setup__guide--progressbar {
+    width: 100%;
+    font-size: var(--small-font-size);
+    line-height: var(--small-line-height);
+    font-weight: var(--regular-font-weight); }
+  .setup__guide--dropdown {
+    width: 20px;
+    height: 20px;
+    font-size: 1.5rem;
+    display: block;
+    float: right;
+    margin-top: -1rem;
+    margin-right: 1rem;
+    background-image: url(https://crushingit.tech/hackathon-assets/icon-arrow-down.svg);
+    border-radius: 5px;
+    background-position: center center;
+    background-repeat: no-repeat;
+    position: absolute;
+    right: 0.5rem;
+    top: 2.9rem;
+    transition: transform 0.3s ease-in-out; }
+    .setup__guide--dropdown:hover {
+      background-color: var(--color-state-hover); }
+    .setup__guide--dropdown:active {
+      background-color: var(--color-state-pressed); }
+    .setup__guide--dropdown:focus {
+      outline: none;
+      border: 2px solid var(--color-state-focused); }
 
 .setup__stage__group {
   background-color: green;
@@ -213,3 +261,7 @@ body {
 .setup__stage {
   background-color: purple;
   width: 100%; }
+
+details[open] .setup__guide--dropdown {
+  transform: rotate(180deg);
+  transition: transform 0.3s ease-in-out; }
