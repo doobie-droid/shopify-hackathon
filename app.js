@@ -1,106 +1,216 @@
 "use strict";
-// This is the functionality used for closing the Subscription Trial Modal
 
-const closeModal = document.querySelector("#close-modal");
-const alertDialog = document.querySelector("#alert-dialog");
+// DOM Elements
+const notificationIcon = document.querySelector(".notification__box");
+const userIcon = document.querySelector(".user__box");
+const alertBox = document.querySelector(".alert__box");
+const adminMenuBox = document.querySelector(".admin__menu__box");
+const closeTrialIcon = document.querySelector(".trial__close__icon");
+const trialBox = document.querySelector(".trial__section");
+const progressBar = document.querySelector(".setup__progress__bar");
+const closeSetupIcon = document.querySelector(".close__setup");
+const openSetupIcon = document.querySelector(".open__setup");
 
-const modalCloserFunction = function () {
-  alertDialog.remove();
-};
+const setupStepsBox = document.querySelector(".setup__steps__box");
+const allSetupStepBox = document.querySelectorAll(".setup__step__box");
+const allSetupSteps = document.querySelectorAll(".setup__step__heading__text");
+const allSetupBtn = document.querySelectorAll(".setup__step__box__button");
+const allSetupCheckedIcon = document.querySelector(
+  ".setup__step__checked__icon"
+);
+const allSetupSelectIcon = document.querySelector(".setup__step__select__icon");
+const allSetupCheckbox = document.querySelectorAll(".setup__checkbox");
+const allSetupCheckboxBoxes = document.querySelectorAll(
+  ".setup__step__checkbox__box"
+);
 
-closeModal.addEventListener("click", modalCloserFunction);
+// Functions
 
-//This is the functionality used for controlling the accordion menu
-let openAccordions = [];
-class Accordion {
-  constructor(domNode) {
-    this.controllerElement = domNode;
-    this.controllerElementButton = this.controllerElement.querySelector(
-      "button[aria-expanded]"
-    );
+function closeSetupBox() {
+  setupStepsBox.style.display = "none";
+  openSetupIcon.style.display = "block";
+  closeSetupIcon.style.display = "none";
+  allSetupStepBox.forEach((step) => {
+    step.setAttribute("aria-hidden", "true");
+  });
+  setupStepsBox.setAttribute("aria-hidden", "true");
+}
 
-    this.controlledElementId =
-      this.controllerElementButton.getAttribute("aria-controls");
+function openSetupBox() {
+  setupStepsBox.style.display = "block";
+  openSetupIcon.style.display = "none";
+  closeSetupIcon.style.display = "block";
+  allSetupStepBox.forEach((step) => {
+    step.setAttribute("aria-hidden", "false");
+  });
+  setupStepsBox.setAttribute("aria-hidden", "false");
+}
 
-    this.controlledElement = document.getElementById(this.controlledElementId);
+function toggleNotificationBox() {
+  alertBox.classList.toggle("alert__box__toggle");
+  notificationIcon.classList.toggle("notification__icon__hover");
 
-    const controlledIndex = this.controlledElementId.charAt(
-      this.controlledElementId.length - 1
-    );
-    this.controlledElementImage = document.querySelector(
-      `#accordion-image-${controlledIndex}`
-    );
+  const expanded = alertBox.classList.contains("alert__box__toggle");
+  alertBox.setAttribute("aria-expanded", expanded);
+}
 
-    this.open =
-      this.controllerElementButton.getAttribute("aria-expanded") === "true";
-
-    // add event listeners
-    this.controllerElementButton.addEventListener(
-      "click",
-      this.onButtonClick.bind(this)
-    );
-  }
-
-  onButtonClick() {
-    this.toggle(!this.open);
-  }
-
-  toggle(open) {
-    // if the state is already set as requested, do nothing
-    if (open === this.open) {
-      return;
-    }
-    // update state
-    this.open = open;
-    // update DOM
-    this.controllerElementButton.setAttribute("aria-expanded", `${open}`);
-    if (open) {
-      this.controlledElement.removeAttribute("hidden");
-      this.controlledElement.nextElementSibling.removeAttribute("hidden");
-      this.controlledElement.parentElement.parentElement.classList.add(
-        "accordion-card"
-      );
-      this.controlledElementImage.removeAttribute("hidden");
-      this.closeOtherOpenAccordions();
-    } else {
-      this.controlledElement.setAttribute("hidden", "");
-      this.controlledElement.nextElementSibling.setAttribute("hidden", "");
-      this.controlledElement.parentElement.parentElement.classList.remove(
-        "accordion-card"
-      );
-      this.controlledElementImage.setAttribute("hidden", "");
-    }
-  }
-
-  open() {
-    this.toggle(true);
-  }
-
-  close() {
-    this.toggle(false);
-  }
-
-  closeOtherOpenAccordions() {
-    openAccordions.push(this);
-    if (openAccordions.length > 0) {
-      const tempOpenAccordions = [];
-      openAccordions.forEach((accordion, index) => {
-        if (accordion.controlledElementId == this.controlledElementId) {
-          tempOpenAccordions.push(accordion);
-        } else {
-          accordion.close();
-        }
-      });
-      openAccordions = tempOpenAccordions;
+function handleKeyPress(event) {
+  if (event.key === "Enter") {
+    event.preventDefault();
+    if (event.target === notificationIcon) {
+      toggleNotificationBox();
+    } else if (event.target === userIcon) {
+      toggleAdminUserBox();
     }
   }
 }
 
-// initialize all accordions
-const allAccordions = document.querySelectorAll(".accordion h3");
-allAccordions.forEach((accordionElement, index) => {
-  const accordion = new Accordion(accordionElement);
-  if (!index) {
-    openAccordions.push(accordion);
+function toggleAdminUserBox() {
+  adminMenuBox.classList.toggle("admin__menu__toggle");
+  userIcon.classList.toggle("user__box__active");
+
+  const expanded = adminMenuBox.classList.contains("admin__menu__toggle");
+  adminMenuBox.setAttribute("aria-expanded", expanded);
+}
+
+function removeTrialBox() {
+  trialBox.setAttribute("aria-hidden", "true");
+  trialBox.style.display = "none";
+}
+
+function handleTrialBoxKeyPress(event) {
+  if (event.key === "Enter" || event.key === " ") {
+    removeTrialBox();
+    event.preventDefault();
+  }
+}
+
+// Checkbox Functions
+function handleCheckboxToggle(checkbox, checkedIcon, selectIcon) {
+  checkbox.checked = !checkbox.checked;
+
+  if (checkbox.checked) {
+    checkedIcon.classList.add("setup__step__checked__icon__active");
+    selectIcon.style.display = "none";
+  } else {
+    checkedIcon.classList.remove("setup__step__checked__icon__active");
+    selectIcon.style.display = "block";
+  }
+}
+
+function updateProgressBar() {
+  const progressNumber = document.querySelector(".setup__completed__number");
+  const completedSteps = document.querySelectorAll(
+    ".setup__step__checked__icon__active"
+  );
+
+  progressBar.value = completedSteps.length;
+  progressNumber.textContent = completedSteps.length;
+}
+
+function expandNextIncompleteStep(startIndex) {
+  let nextUncheckedIndex = null;
+
+  for (let i = startIndex; i < allSetupCheckboxBoxes.length; i++) {
+    const checkboxBox = allSetupCheckboxBoxes[i];
+    const checkbox = checkboxBox.querySelector(".setup__checkbox");
+
+    if (!checkbox.checked) {
+      nextUncheckedIndex = i;
+      removeAllActiveBoxClasses();
+      activateNextStepBox(checkboxBox);
+      break;
+    }
+  }
+
+  if (nextUncheckedIndex === null) {
+    for (let i = 0; i < startIndex; i++) {
+      const checkboxBox = allSetupCheckboxBoxes[i];
+      const checkbox = checkboxBox.querySelector(".setup__checkbox");
+
+      if (!checkbox.checked) {
+        removeAllActiveBoxClasses();
+        activateNextStepBox(checkboxBox);
+        break;
+      }
+    }
+  }
+}
+
+function removeAllActiveBoxClasses() {
+  const activeSetUpBox = document.querySelectorAll(".setup__step__box__active");
+
+  activeSetUpBox.forEach((box) => {
+    box.classList.remove("setup__step__box__active");
+  });
+}
+
+function activateNextStepBox(checkboxBox) {
+  const nextStepBox = checkboxBox.closest(".setup__step__box");
+  if (nextStepBox) {
+    nextStepBox.classList.add("setup__step__box__active");
+  }
+}
+
+function expandSetupStep(e) {
+  removeAllActiveBoxClasses();
+  const parentEl = e.target.closest(".setup__step__box");
+  parentEl.classList.add("setup__step__box__active");
+}
+
+// Checkbox Setup
+allSetupCheckboxBoxes.forEach((checkboxBox, index) => {
+  const checkbox = checkboxBox.querySelector(".setup__checkbox");
+  const checkedIcon = checkboxBox.querySelector(".setup__step__checked__icon");
+  const selectIcon = checkboxBox.querySelector(".setup__step__select__icon");
+
+  checkboxBox.addEventListener("click", function () {
+    handleCheckboxToggle(checkbox, checkedIcon, selectIcon);
+    updateProgressBar();
+    removeAllActiveBoxClasses();
+    expandNextIncompleteStep(index + 1);
+  });
+});
+
+// Event Listeners
+notificationIcon.addEventListener("click", toggleNotificationBox);
+userIcon.addEventListener("click", toggleAdminUserBox);
+notificationIcon.addEventListener("keypress", handleKeyPress);
+userIcon.addEventListener("keypress", handleKeyPress);
+
+closeTrialIcon.addEventListener("click", removeTrialBox);
+closeTrialIcon.addEventListener("keypress", handleTrialBoxKeyPress);
+closeTrialIcon.addEventListener("keypress", (event) => {
+  if (event.key === "Escape") {
+    removeTrialBox();
   }
 });
+
+closeSetupIcon.addEventListener("click", closeSetupBox);
+openSetupIcon.addEventListener("click", openSetupBox);
+allSetupSteps.forEach((btn) => btn.addEventListener("click", expandSetupStep));
+
+// notificationIcon.addEventListener("keydown", (event) => {
+//   if (event.key === "Enter" || event.key === " ") {
+//     toggleNotificationBox();
+//     event.preventDefault(); // Prevents the default behavior of the space key
+//   }
+// });
+
+// // Add ARIA attributes to the notification icon
+// notificationIcon.setAttribute("role", "button");
+// notificationIcon.setAttribute("aria-haspopup", "true");
+// notificationIcon.setAttribute("aria-expanded", "false");
+
+// // Add keyboard accessibility to the user icon
+// userIcon.addEventListener("keydown", (event) => {
+//   if (event.key === "Enter" || event.key === " ") {
+//     toggleAdminUserBox();
+//     event.preventDefault(); // Prevents the default behavior of the space key
+//   }
+// });
+
+// // Add ARIA attributes to the user icon
+// userIcon.setAttribute("role", "button");
+// userIcon.setAttribute("aria-haspopup", "true");
+// userIcon.setAttribute("aria-expanded", "false");
