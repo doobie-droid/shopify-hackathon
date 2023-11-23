@@ -312,6 +312,8 @@ body {
       font-size: var(--small-font-size);
       line-height: var(--small-line-height);
       font-weight: var(--regular-font-weight);
+      // margin-bottom: 1.5rem;
+      // padding-bottom: 1.5rem;
     }
 
     &--dropdown {
@@ -349,6 +351,26 @@ body {
   .accordion {
     width: 100%;
 
+    div:has(+ .accordion-card) {
+      margin-bottom: -0.5rem;
+    }
+
+    & .accordion-card:last-child {
+      margin-bottom: 0;
+    }
+
+    .accordion-card-initial {
+      margin-top: 2rem;
+    }
+
+    & .accordion-card:first-child {
+      margin-top: 0;
+    }
+
+    & > div {
+      // margin-top: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
     &-text {
       display: flex;
       flex-direction: column;
@@ -366,29 +388,38 @@ body {
       font-size: var(--medium-font-size);
       line-height: var(--large-line-height);
       font-weight: var(--semibold-font-weight);
+      position: relative;
     }
 
     &-icon {
       width: 1.5rem;
       height: 1.5rem;
-     
+      background-color: red;
+      // position: absolute;
+      // left: 0;
     }
     &-title {
-      padding-left: 2rem;
+      padding-left: 26px;
     }
     &-card {
       background-color: var(--color-special-2);
       border-radius: 1.5rem;
       padding-top: 0.8rem;
       padding-bottom: 1.2rem;
-      padding-left: 2rem;
+      padding-left: 36px;
       padding-right: 0.8rem;
       display: flex;
       align-items: stretch;
+      transform: scaleX(1.03) translateY(1rem);
+      margin-bottom: 0;
+      margin-top: 0;
+      // transition: transform 0.1s;
 
       .accordion-title {
         padding-left: 0;
-      
+      }
+      .accordion-icon {
+        // left: -2rem;
       }
     }
 
@@ -454,3 +485,8 @@ details[open] .setup__guide--dropdown {
   transform: rotate(180deg);
   transition: transform 0.3s ease-in-out;
 }
+
+// .accordion-card-collapsed {
+//   padding-top: 0.8rem;
+//   margin-bottom: 2rem;
+// }

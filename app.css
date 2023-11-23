@@ -272,6 +272,16 @@ body {
 
 .setup .accordion {
   width: 100%; }
+  .setup .accordion div:has(+ .accordion-card) {
+    margin-bottom: -0.5rem; }
+  .setup .accordion .accordion-card:last-child {
+    margin-bottom: 0; }
+  .setup .accordion .accordion-card-initial {
+    margin-top: 2rem; }
+  .setup .accordion .accordion-card:first-child {
+    margin-top: 0; }
+  .setup .accordion > div {
+    margin-bottom: 1.5rem; }
   .setup .accordion-text {
     display: flex;
     flex-direction: column;
@@ -285,21 +295,26 @@ body {
     color: var(--color-font-dark);
     font-size: var(--medium-font-size);
     line-height: var(--large-line-height);
-    font-weight: var(--semibold-font-weight); }
+    font-weight: var(--semibold-font-weight);
+    position: relative; }
   .setup .accordion-icon {
     width: 1.5rem;
-    height: 1.5rem; }
+    height: 1.5rem;
+    background-color: red; }
   .setup .accordion-title {
-    padding-left: 2rem; }
+    padding-left: 26px; }
   .setup .accordion-card {
     background-color: var(--color-special-2);
     border-radius: 1.5rem;
     padding-top: 0.8rem;
     padding-bottom: 1.2rem;
-    padding-left: 2rem;
+    padding-left: 36px;
     padding-right: 0.8rem;
     display: flex;
-    align-items: stretch; }
+    align-items: stretch;
+    transform: scaleX(1.03) translateY(1rem);
+    margin-bottom: 0;
+    margin-top: 0; }
     .setup .accordion-card .accordion-title {
       padding-left: 0; }
   .setup .accordion-panel {
