@@ -49,6 +49,7 @@ button {
   --color-special-4: #2a2a2a;
   --color-special-5: #2b2b2b;
   --color-special-6: #e7e7e7;
+  --color-special-7: #e0e0e0;
   --default-font-size: 1.2rem;
   --medium-font-size: 1.3rem;
   --default-letter-spacing: 0%;
@@ -294,7 +295,7 @@ body {
     top: 0;
     background-color: inherit;
     -webkit-mask-image: linear-gradient(black, black 80%, transparent, transparent 90%);
-    mask-image: linear-gradient black, transparent;
+    mask-image: linear-gradient(black, black 80%, transparent, transparent 90%);
     mask-mode: alpha; }
   .setup .accordion-trigger {
     color: var(--color-font-dark);
@@ -303,9 +304,13 @@ body {
     font-weight: var(--semibold-font-weight);
     position: relative; }
   .setup .accordion-icon {
-    width: 1.5rem;
-    height: 1.5rem;
-    background-color: red; }
+    width: 2.5rem;
+    height: 2.5rem;
+    position: absolute;
+    color: blue;
+    left: 0rem;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 32 32" fill="none"><circle cx="14" cy="12" r="12" stroke="%238a8a8a" stroke-width="2.5"  stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4 6"/></svg>');
+    background-repeat: no-repeat; }
   .setup .accordion-title {
     padding-left: 26px; }
   .setup .accordion-card {
@@ -322,6 +327,8 @@ body {
     margin-top: 0; }
     .setup .accordion-card .accordion-title {
       padding-left: 0; }
+    .setup .accordion-card .accordion-icon {
+      left: -2.6rem; }
   .setup .accordion-panel {
     color: var(--color-font-mid);
     font-weight: var(--medium-font-weight);
@@ -369,6 +376,12 @@ body {
       padding: 0.3rem 0.6rem; }
     .setup .accordion-panel-button-transparent:hover {
       background-color: var(--color-special-6); }
+    .setup .accordion-panel-button-transparent:active {
+      background-color: var(--color-special-7); }
+    .setup .accordion-panel-button-transparent:focus {
+      outline: none;
+      background-color: var(--color-background-white);
+      border: 2px solid var(--color-state-focused); }
 
 details[open] .setup__guide--dropdown {
   transform: rotate(180deg);
