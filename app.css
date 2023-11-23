@@ -48,6 +48,7 @@ button {
   --color-special-3: #404040;
   --color-special-4: #2a2a2a;
   --color-special-5: #2b2b2b;
+  --color-special-6: #e7e7e7;
   --default-font-size: 1.2rem;
   --medium-font-size: 1.3rem;
   --default-letter-spacing: 0%;
@@ -290,7 +291,11 @@ body {
     width: 15.6rem;
     height: 12rem;
     right: 0;
-    top: 0; }
+    top: 0;
+    background-color: inherit;
+    -webkit-mask-image: linear-gradient(black, black 80%, transparent, transparent 90%);
+    mask-image: linear-gradient black, transparent;
+    mask-mode: alpha; }
   .setup .accordion-trigger {
     color: var(--color-font-dark);
     font-size: var(--medium-font-size);
@@ -354,6 +359,16 @@ body {
     .setup .accordion-panel-button:focus {
       background-color: var(--color-special-3);
       box-shadow: inset 0 0 0 1.5px #212121, 0 0 0 3px white, 0 0 0 5px #0056c6; }
+    .setup .accordion-panel-button-transparent {
+      color: var(--color-font-dark);
+      font-size: var(--small-font-size);
+      line-height: var(--small-line-height);
+      font-weight: var(--semibold-font-weight);
+      margin-left: 2.5rem;
+      border-radius: 0.6rem;
+      padding: 0.3rem 0.6rem; }
+    .setup .accordion-panel-button-transparent:hover {
+      background-color: var(--color-special-6); }
 
 details[open] .setup__guide--dropdown {
   transform: rotate(180deg);
