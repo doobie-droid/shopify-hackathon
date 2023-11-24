@@ -295,8 +295,9 @@ body {
 }
 
 .profile__menu {
-  // height: 38.4rem;
-  // width: 32rem;
+
+  transition: all 0.3s ;
+  width: 32rem;
   background-color: var(--color-background-white);
   z-index: 5;
   padding: 1.6rem;
@@ -358,6 +359,13 @@ body {
     width: 100%;
     border-radius: 0.8rem;
     border: 2px solid transparent;
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    svg{
+      margin-right: 0.8rem;
+    }
     &:hover {
       background-color: var(--color-state-hover);
     }
@@ -591,6 +599,8 @@ body {
     }
     &-trigger {
       color: var(--color-font-dark);
+      // background-color: red;
+      width: 100%;
       font-size: var(--medium-font-size);
       line-height: var(--large-line-height);
       font-weight: var(--semibold-font-weight);
@@ -600,13 +610,16 @@ body {
     &-icon {
       width: 2.5rem;
       height: 2.5rem;
-      // background-color: red;
       position: absolute;
       color: blue;
       left: 0rem;
-      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 32 32" fill="none"><circle cx="14" cy="12" r="12" stroke="%238a8a8a" stroke-width="2.5"  stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4 6"/></svg>');
-      // background-position: center center;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 32 32" fill="none"><circle cx="14" cy="13" r="12" stroke="%238a8a8a" stroke-width="2.5"  stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4 6"/></svg>');
       background-repeat: no-repeat;
+
+      &:hover {
+        background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 32 32" fill="none"><circle cx="14" cy="13" r="12" stroke="%238a8a8a" stroke-width="2.5" /></svg>');
+        background-repeat: no-repeat;
+      }
     }
     &-title {
       padding-left: 26px;

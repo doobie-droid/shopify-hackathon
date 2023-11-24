@@ -228,6 +228,8 @@ body {
   display: block; }
 
 .profile__menu {
+  transition: all 0.3s;
+  width: 32rem;
   background-color: var(--color-background-white);
   z-index: 5;
   padding: 1.6rem;
@@ -279,7 +281,12 @@ body {
     margin-top: 0.4rem;
     width: 100%;
     border-radius: 0.8rem;
-    border: 2px solid transparent; }
+    border: 2px solid transparent;
+    position: relative;
+    display: flex;
+    align-items: center; }
+    .profile__menu--menuitem svg {
+      margin-right: 0.8rem; }
     .profile__menu--menuitem:hover {
       background-color: var(--color-state-hover); }
     .profile__menu--menuitem:active {
@@ -445,6 +452,7 @@ body {
     mask-mode: alpha; }
   .setup .accordion-trigger {
     color: var(--color-font-dark);
+    width: 100%;
     font-size: var(--medium-font-size);
     line-height: var(--large-line-height);
     font-weight: var(--semibold-font-weight);
@@ -455,8 +463,11 @@ body {
     position: absolute;
     color: blue;
     left: 0rem;
-    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 32 32" fill="none"><circle cx="14" cy="12" r="12" stroke="%238a8a8a" stroke-width="2.5"  stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4 6"/></svg>');
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 32 32" fill="none"><circle cx="14" cy="13" r="12" stroke="%238a8a8a" stroke-width="2.5"  stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4 6"/></svg>');
     background-repeat: no-repeat; }
+    .setup .accordion-icon:hover {
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 32 32" fill="none"><circle cx="14" cy="13" r="12" stroke="%238a8a8a" stroke-width="2.5" /></svg>');
+      background-repeat: no-repeat; }
   .setup .accordion-title {
     padding-left: 26px; }
   .setup .accordion-card {

@@ -44,7 +44,10 @@ class Accordion {
   }
 
   onButtonClick() {
-    this.toggle(!this.open);
+    if (!this.open) {
+      
+      this.toggle(!this.open);
+    }
   }
 
   toggle(open) {
@@ -108,6 +111,7 @@ allAccordions.forEach((accordionElement, index) => {
 });
 
 
+//This is the functionality used for controlling the menus
 class Menu {
   static openMenuItems = [];
   constructor(menuButton) {
