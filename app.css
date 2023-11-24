@@ -360,185 +360,178 @@ body {
     cursor: pointer;
     border: none; }
 
-.setup .container {
-  background-color: pink;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-evenly;
-  margin: 0 auto;
-  width: 56vw;
-  padding-left: 1.6rem;
-  padding-right: 1.6rem;
-  padding-top: 1.55rem;
-  padding-bottom: 1.55rem;
-  background-color: var(--color-background-white);
-  color: var(--color-font-light);
-  border-radius: 2rem;
-  position: relative; }
-
-.setup summary {
-  display: block;
-  cursor: pointer; }
-
-.setup__guide {
-  width: 100%;
-  color: var(--color-font-dark); }
-  .setup__guide--title {
-    font-size: var(--large-font-size);
-    line-height: var(--large-line-height);
-    font-weight: var(--semibold-font-weight);
-    width: 100%;
-    margin-bottom: 0.4rem; }
-  .setup__guide--text {
-    font-size: var(--medium-font-size);
-    font-weight: var(--regular-font-weight);
-    line-height: var(--large-line-height);
-    width: 100%;
-    margin-bottom: 1.6rem; }
-  .setup__guide--progressbar {
-    width: 100%;
-    font-size: var(--small-font-size);
-    line-height: var(--small-line-height);
-    font-weight: var(--regular-font-weight); }
-  .setup__guide--dropdown {
-    width: 20px;
-    height: 20px;
-    font-size: 1.5rem;
-    display: block;
-    float: right;
-    margin-top: -1rem;
-    margin-right: 1rem;
-    background-image: url(https://crushingit.tech/hackathon-assets/icon-arrow-down.svg);
-    border-radius: 5px;
-    background-position: center center;
-    background-repeat: no-repeat;
-    position: absolute;
-    right: 0.5rem;
-    top: 2.9rem;
-    transition: transform 0.3s ease-in-out; }
-    .setup__guide--dropdown:hover {
-      background-color: var(--color-state-hover); }
-    .setup__guide--dropdown:active {
-      background-color: var(--color-state-pressed); }
-    .setup__guide--dropdown:focus {
-      outline: none;
-      border: 2px solid var(--color-state-focused); }
-
-.setup .accordion {
-  width: 100%; }
-  .setup .accordion div:has(+ .accordion-card) {
-    margin-bottom: -0.5rem; }
-  .setup .accordion .accordion-card:last-child {
-    margin-bottom: 0; }
-  .setup .accordion .accordion-card-initial {
-    margin-top: 2rem; }
-  .setup .accordion .accordion-card:first-child {
-    margin-top: 0; }
-  .setup .accordion > div {
-    margin-bottom: 1.5rem; }
-  .setup .accordion-text {
+.setup {
+  margin-top: 2rem; }
+  .setup .container {
+    background-color: pink;
     display: flex;
     flex-direction: column;
-    justify-content: space-between; }
-  .setup .accordion-image {
-    width: 15.6rem;
-    height: 12rem;
-    right: 0;
-    top: 0;
-    background-color: inherit;
-    -webkit-mask-image: linear-gradient(black, black 80%, transparent, transparent 90%);
-    mask-image: linear-gradient(black, black 80%, transparent, transparent 90%);
-    mask-mode: alpha; }
-  .setup .accordion-trigger {
-    color: var(--color-font-dark);
-    width: 100%;
-    font-size: var(--medium-font-size);
-    line-height: var(--large-line-height);
-    font-weight: var(--semibold-font-weight);
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 0 auto;
+    width: 56vw;
+    padding-top: 1.55rem;
+    padding-bottom: .8rem;
+    background-color: var(--color-background-white);
+    color: var(--color-font-light);
+    border-radius: 2rem;
     position: relative; }
-  .setup .accordion-icon {
-    width: 2.5rem;
-    height: 2.5rem;
-    position: absolute;
-    color: blue;
-    left: 0rem;
-    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 32 32" fill="none"><circle cx="14" cy="13" r="12" stroke="%238a8a8a" stroke-width="2.5"  stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4 6"/></svg>');
-    background-repeat: no-repeat; }
-    .setup .accordion-icon:hover {
-      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 32 32" fill="none"><circle cx="14" cy="13" r="12" stroke="%238a8a8a" stroke-width="2.5" /></svg>');
-      background-repeat: no-repeat; }
-  .setup .accordion-title {
-    padding-left: 26px; }
-  .setup .accordion-card {
-    background-color: var(--color-special-2);
-    border-radius: 1.5rem;
-    padding-top: 0.8rem;
-    padding-bottom: 1.2rem;
-    padding-left: 36px;
-    padding-right: 0.8rem;
-    display: flex;
-    align-items: stretch;
-    transform: scaleX(1.03) translateY(1rem);
-    margin-bottom: 0;
-    margin-top: 0; }
-    .setup .accordion-card .accordion-title {
-      padding-left: 0; }
-    .setup .accordion-card .accordion-icon {
-      left: -2.6rem; }
-  .setup .accordion-panel {
-    color: var(--color-font-mid);
-    font-weight: var(--medium-font-weight);
-    font-size: var(--medium-font-size);
-    line-height: var(--large-line-height);
-    width: 100%; }
-    .setup .accordion-panel a {
-      color: var(--color-state-focused);
+  .setup summary {
+    display: block;
+    cursor: pointer; }
+  .setup__guide {
+    width: 100%;
+    color: var(--color-font-dark);
+    padding-left: 1.6rem;
+    padding-right: 1.6rem;
+    margin-bottom: 1.5rem; }
+    .setup__guide--title {
       font-size: var(--large-font-size);
-      font-weight: var(--medium-font-weight);
-      text-decoration: none; }
-    .setup .accordion-panel a:visited {
-      text-decoration: none; }
-    .setup .accordion-panel-button {
-      background-color: var(--color-special-3);
-      color: var(--color-font-light);
-      border-radius: 0.6rem;
+      line-height: var(--large-line-height);
+      font-weight: var(--semibold-font-weight);
+      width: 100%;
+      margin-bottom: 0.4rem; }
+    .setup__guide--text {
+      font-size: var(--medium-font-size);
+      font-weight: var(--regular-font-weight);
+      line-height: var(--large-line-height);
+      width: 100%;
+      margin-bottom: 1.6rem; }
+    .setup__guide--progressbar {
+      width: 100%;
       font-size: var(--small-font-size);
       line-height: var(--small-line-height);
-      letter-spacing: var(--default-letter-spacing);
-      font-weight: var(--semibold-font-weight);
-      border-top: 1.5px solid var(--color-stroke-200);
-      border-left: 1.5px solid var(--color-stroke-200);
-      border-right: 1.5px solid var(--color-stroke-200);
-      border-bottom: none;
-      padding: 0.3rem 0.6rem;
-      box-shadow: 0 2px 0px 0px black, 0 1px 0 1.5px #212121, 0 0 0 1.5px #212121; }
-    .setup .accordion-panel-button:hover {
-      background-color: var(--color-special-4); }
-    .setup .accordion-panel-button:active {
-      outline: none;
-      background-color: var(--color-special-5);
-      box-shadow: inset 0 3px 0 0 black, 0 0 0 1.5px #212121;
-      transition: box-shadow 0.5s ease-in-out; }
-    .setup .accordion-panel-button:focus {
-      background-color: var(--color-special-3);
-      box-shadow: inset 0 0 0 1.5px #212121, 0 0 0 3px white, 0 0 0 5px #0056c6; }
-    .setup .accordion-panel-button-transparent {
+      font-weight: var(--regular-font-weight); }
+    .setup__guide--dropdown {
+      width: 20px;
+      height: 20px;
+      font-size: 1.5rem;
+      display: block;
+      float: right;
+      margin-top: -1rem;
+      margin-right: 1rem;
+      background-image: url(https://crushingit.tech/hackathon-assets/icon-arrow-down.svg);
+      border-radius: 5px;
+      background-position: center center;
+      background-repeat: no-repeat;
+      position: absolute;
+      right: 0.5rem;
+      top: 2.9rem;
+      transition: transform 0.3s ease-in-out; }
+      .setup__guide--dropdown:hover {
+        background-color: var(--color-state-hover); }
+      .setup__guide--dropdown:active {
+        background-color: var(--color-state-pressed); }
+      .setup__guide--dropdown:focus {
+        outline: none;
+        border: 2px solid var(--color-state-focused); }
+  .setup .accordion {
+    width: 100%; }
+    .setup .accordion .accordion-card:last-child {
+      margin-bottom: 0; }
+    .setup .accordion > div {
+      margin-bottom: 1.5rem; }
+    .setup .accordion-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between; }
+    .setup .accordion-image {
+      width: 15.6rem;
+      height: 12rem;
+      right: 0;
+      top: 0;
+      background-color: inherit;
+      -webkit-mask-image: linear-gradient(black, black 80%, transparent, transparent 90%);
+      mask-image: linear-gradient(black, black 80%, transparent, transparent 90%);
+      mask-mode: alpha; }
+    .setup .accordion-trigger {
       color: var(--color-font-dark);
-      font-size: var(--small-font-size);
-      line-height: var(--small-line-height);
+      width: 100%;
+      font-size: var(--medium-font-size);
+      line-height: var(--large-line-height);
       font-weight: var(--semibold-font-weight);
-      margin-left: 2.5rem;
-      border-radius: 0.6rem;
-      padding: 0.3rem 0.6rem; }
-    .setup .accordion-panel-button-transparent:hover {
-      background-color: var(--color-special-6); }
-    .setup .accordion-panel-button-transparent:active {
-      background-color: var(--color-special-7); }
-    .setup .accordion-panel-button-transparent:focus {
-      outline: none;
-      background-color: var(--color-background-white);
-      border: 2px solid var(--color-state-focused); }
+      position: relative;
+      margin-left: 4.4rem;
+      margin-bottom: 0.8rem; }
+    .setup .accordion-icon {
+      width: 2.5rem;
+      height: 2.5rem;
+      position: absolute;
+      color: blue;
+      left: -2.6rem;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 32 32" fill="none"><circle cx="14" cy="13" r="12" stroke="%238a8a8a" stroke-width="2.5"  stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4 6"/></svg>');
+      background-repeat: no-repeat; }
+      .setup .accordion-icon:hover {
+        background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 32 32" fill="none"><circle cx="14" cy="13" r="12" stroke="%238a8a8a" stroke-width="2.5" /></svg>');
+        background-repeat: no-repeat; }
+    .setup .accordion-card {
+      background-color: var(--color-special-2);
+      border-radius: 1.5rem;
+      padding-top: 0.8rem;
+      padding-bottom: 1.2rem;
+      padding-left: 36px;
+      padding-right: 0.8rem;
+      display: flex;
+      align-items: stretch;
+      margin-bottom: 0;
+      margin-top: 1rem;
+      margin-left: .8rem;
+      margin-right: .8rem; }
+      .setup .accordion-card .accordion-trigger {
+        margin-left: 0; }
+    .setup .accordion-panel {
+      color: var(--color-font-mid);
+      font-weight: var(--medium-font-weight);
+      font-size: var(--medium-font-size);
+      line-height: var(--large-line-height);
+      width: 100%; }
+      .setup .accordion-panel a {
+        color: var(--color-state-focused);
+        font-size: var(--large-font-size);
+        font-weight: var(--medium-font-weight);
+        text-decoration: none; }
+      .setup .accordion-panel a:visited {
+        text-decoration: none; }
+      .setup .accordion-panel-button {
+        background-color: var(--color-special-3);
+        color: var(--color-font-light);
+        border-radius: 0.6rem;
+        font-size: var(--small-font-size);
+        line-height: var(--small-line-height);
+        letter-spacing: var(--default-letter-spacing);
+        font-weight: var(--semibold-font-weight);
+        border-top: 1.5px solid var(--color-stroke-200);
+        border-left: 1.5px solid var(--color-stroke-200);
+        border-right: 1.5px solid var(--color-stroke-200);
+        border-bottom: none;
+        padding: 0.3rem 0.6rem;
+        box-shadow: 0 2px 0px 0px black, 0 1px 0 1.5px #212121, 0 0 0 1.5px #212121; }
+      .setup .accordion-panel-button:hover {
+        background-color: var(--color-special-4); }
+      .setup .accordion-panel-button:active {
+        outline: none;
+        background-color: var(--color-special-5);
+        box-shadow: inset 0 3px 0 0 black, 0 0 0 1.5px #212121;
+        transition: box-shadow 0.5s ease-in-out; }
+      .setup .accordion-panel-button:focus {
+        background-color: var(--color-special-3);
+        box-shadow: inset 0 0 0 1.5px #212121, 0 0 0 3px white, 0 0 0 5px #0056c6; }
+      .setup .accordion-panel-button-transparent {
+        color: var(--color-font-dark);
+        font-size: var(--small-font-size);
+        line-height: var(--small-line-height);
+        font-weight: var(--semibold-font-weight);
+        margin-left: 2.5rem;
+        border-radius: 0.6rem;
+        padding: 0.3rem 0.6rem; }
+      .setup .accordion-panel-button-transparent:hover {
+        background-color: var(--color-special-6); }
+      .setup .accordion-panel-button-transparent:active {
+        background-color: var(--color-special-7); }
+      .setup .accordion-panel-button-transparent:focus {
+        outline: none;
+        background-color: var(--color-background-white);
+        border: 2px solid var(--color-state-focused); }
 
 details[open] .setup__guide--dropdown {
   transform: rotate(180deg);

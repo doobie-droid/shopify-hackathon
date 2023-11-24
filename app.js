@@ -3,11 +3,11 @@
 // This is the functionality used for closing the Subscription Trial Modal
 
 const closeModal = document.querySelector("#close-modal");
-const alertDialog = document.querySelector("#alert-dialog");
+const trialModalSection = document.querySelector("section.trialModal");
 
 const modalCloserFunction = function () {
-  alertDialog.remove();
-  // document.querySelector("section.setup").classList.add("move-up-setup");
+  trialModalSection.remove();
+  document.querySelector("section.setup").classList.add("move-up-setup");
 };
 
 closeModal.addEventListener("click", modalCloserFunction);
