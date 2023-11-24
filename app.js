@@ -8,7 +8,6 @@ const alertDialog = document.querySelector("#alert-dialog");
 const modalCloserFunction = function () {
   alertDialog.remove();
   document.querySelector("section.setup").classList.add("move-up-setup");
-
 };
 
 closeModal.addEventListener("click", modalCloserFunction);
@@ -160,7 +159,7 @@ function navigateNotificationMenu(key, menuItems, index) {
 }
 notificationMenuItemList.forEach((item, index) => {
   item.addEventListener("keyup", function (event) {
-    navigateNotificationMenu(event.key, notificationMenuItemList,index);
+    navigateNotificationMenu(event.key, notificationMenuItemList, index);
   });
 });
 
@@ -191,26 +190,78 @@ function ToggleNotificationMenu() {
 }
 
 notificationMenuButton.addEventListener("click", ToggleNotificationMenu);
-// // This is the functionality used for controlling the profile menu
 
-// // This is the functionality used for closing all menu when a user clicks in the document
+//  This is the functionality used for controlling the profile menu
+let profileMenuIsOpen = false;
+const profileMenuSection = document.querySelector("#profile__menu--section");
+const profileMenuButton = document.querySelector("#profile__menu--button");
+const profileMenu = document.querySelector("#profile__menu");
+const profileMenuItemList = document.querySelectorAll("#profile__menu button");
 
-// const body = document.querySelector("body");
-// body.addEventListener("click", function (event) {
-//   // const isClickInsideProfileMenu = profileMenu.contains(event.target);
-//   // console.log(event.target);
-//   if(menuIsOpen){
-//     console.log("menu is open");
-//   }else{
-//     console.log("menu is closed");
-//   }
-//   // const isClickInsideNotificationMenu = notificationMenu.contains(event.target);
+function navigateProfileMenu(key, menuItems, index) {
+  switch (key) {
+    case "ArrowUp":
+    case "Up":
+    case "ArrowLeft":
+    case "Left":
+      if (index > 0) {
+        menuItems.item(index - 1).focus();
+      } else {
+        menuItems.item(menuItems.length - 1).focus();
+      }
+      break;
+    case "ArrowDown":
+    case "Down":
+    case "ArrowRight":
+    case "Right":
+      if (index < menuItems.length - 1) {
+        menuItems.item(index + 1).focus();
+      } else {
+        menuItems.item(0).focus();
+      }
+      break;
+    case "Escape":
+    case "Esc":
+      closeProfileMenu();
+      break;
+  }
+}
 
-//   // if (!isClickInsideNotificationMenu) {
-//   //   // closeProfileMenu();
-//   //   closeNotificationMenu();
-//   // }
-// });
+profileMenuItemList.forEach((item, index) => {
+  item.addEventListener("keyup", function (event) {
+    navigateProfileMenu(event.key, profileMenuItemList, index);
+  });
+});
+
+function closeProfileMenu() {
+  profileMenuButton.setAttribute("aria-expanded", "false");
+  profileMenuSection.classList.remove("menu-active");
+  profileMenuIsOpen = false;
+  // closeOverlay();
+  profileMenuButton.focus();
+}
+
+function openProfileMenu() {
+  profileMenuButton.setAttribute("aria-expanded", "true");
+  profileMenuSection.classList.add("menu-active");
+  profileMenuIsOpen = true;
+  profileMenuItemList.item(0).focus();
+  // openOverlay();
+}
+
+function ToggleProfileMenu() {
+  const open = profileMenuButton.getAttribute("aria-expanded") === "true";
+
+  if (open) {
+    closeProfileMenu();
+  } else {
+    openProfileMenu();
+  }
+}
+
+profileMenuButton.addEventListener("click", ToggleProfileMenu);
+
+
 
 overlay.addEventListener("click", function (event) {
   if (notificationMenuIsOpen) {
