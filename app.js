@@ -107,164 +107,111 @@ allAccordions.forEach((accordionElement, index) => {
   }
 });
 
-//This is functionality that is common to both menus
-const overlay = document.querySelector("#overlay");
-function closeOverlay() {
-  overlay.classList.remove("overlay__active");
-}
 
-function openOverlay() {
-  overlay.classList.add("overlay__active");
-}
+class Menu {
+  static openMenuItems = [];
+  constructor(menuButton) {
+    this.createOverlay();
+    this.menuButton = menuButton;
+    this.isOpen = false;
+    const menuId = this.menuButton.getAttribute("aria-controls");
+    this.menu = document.querySelector(`#${menuId}`);
+    this.menuItems = this.menu.querySelectorAll(`#${menuId} button`);
 
-// This is the functionality used for controlling the notifications menu
+    //I did not want to change the html or css to get the menu section so I just added the menuId as a class in the section to use for retrieving the section but I noticed coincidentally that the class for section is the same as the id for the menu
+    this.menuSection = document.querySelector(`section.${menuId}`);
+    this.menuButton.addEventListener("click", this.toggleMenu.bind(this));
+    this.overlay.addEventListener("click", this.closeMenu.bind(this));
+    this.menuItems.forEach((item, index) => {
+      const menu = this;
+      item.addEventListener("keyup", (event) => {
+        menu.navigateMenu(event.key, index);
+      });
+    });
+  }
 
-let notificationMenuIsOpen = false;
-const notificationMenuSection = document.querySelector(
-  "#notification__menu--section"
-);
-const notificationMenuButton = document.querySelector("#notification__button");
-const notificationMenu = document.querySelector("#notification__menu");
-const notificationMenuItemList = document.querySelectorAll(
-  "#notification__menu button"
-);
+  createOverlay() {
+    this.overlay = document.createElement("div");
+    this.overlay.classList.add("overlay");
+    document.body.appendChild(this.overlay);
+  }
+  closeOverlay() {
+    this.overlay.classList.remove("overlay__active");
+  }
 
-function navigateNotificationMenu(key, menuItems, index) {
-  switch (key) {
-    case "ArrowUp":
-    case "Up":
-    case "ArrowLeft":
-    case "Left":
-      if (index > 0) {
-        menuItems.item(index - 1).focus();
-      } else {
-        menuItems.item(menuItems.length - 1).focus();
-      }
-      break;
-    case "ArrowDown":
-    case "Down":
-    case "ArrowRight":
-    case "Right":
-      if (index < menuItems.length - 1) {
-        menuItems.item(index + 1).focus();
-      } else {
-        menuItems.item(0).focus();
-      }
-      break;
-    case "Escape":
-    case "Esc":
-      closeNotificationMenu();
-      break;
+  openOverlay() {
+    this.overlay.classList.add("overlay__active");
+  }
+
+  openMenu() {
+    this.closeAllMenus();
+    this.menuButton.setAttribute("aria-expanded", "true");
+    this.menuSection.classList.add("menu-active");
+    this.isOpen = true;
+    this.menuItems.item(0).focus();
+    this.openOverlay();
+    Menu.openMenuItems.push(this);
+  }
+
+  closeMenu() {
+    this.menuButton.setAttribute("aria-expanded", "false");
+    this.menuSection.classList.remove("menu-active");
+    this.isOpen = false;
+    this.closeOverlay();
+    this.menuButton.focus();
+    Menu.openMenuItems.length = 0;
+  }
+
+  toggleMenu() {
+    this.menuButton.focus();
+    const open = this.menuButton.getAttribute("aria-expanded") === "true";
+
+    if (open) {
+      this.closeMenu();
+    } else {
+      this.openMenu();
+    }
+  }
+
+  closeAllMenus() { 
+  if (Menu.openMenuItems.length > 0) {
+    Menu.openMenuItems.forEach((menuItem) => {
+      menuItem.closeMenu();
+    });
+  }
+  }
+  navigateMenu(keyPress, index) {
+    switch (keyPress) {
+      case "ArrowUp":
+      case "Up":
+      case "ArrowLeft":
+      case "Left":
+        if (index > 0) {
+          this.menuItems.item(index - 1).focus();
+        } else {
+          this.menuItems.item(this.menuItems.length - 1).focus();
+        }
+        break;
+      case "ArrowDown":
+      case "Down":
+      case "ArrowRight":
+      case "Right":
+        if (index < this.menuItems.length - 1) {
+          this.menuItems.item(index + 1).focus();
+        } else {
+          this.menuItems.item(0).focus();
+        }
+        break;
+      case "Escape":
+      case "Esc":
+        this.closeMenu();
+        break;
+    }
   }
 }
-notificationMenuItemList.forEach((item, index) => {
-  item.addEventListener("keyup", function (event) {
-    navigateNotificationMenu(event.key, notificationMenuItemList, index);
-  });
-});
 
-function closeNotificationMenu() {
-  notificationMenuButton.setAttribute("aria-expanded", "false");
-  notificationMenuSection.classList.remove("menu-active");
-  notificationMenuIsOpen = false;
-  closeOverlay();
-  notificationMenuButton.focus();
-}
-
-function openNotificationMenu() {
-  notificationMenuButton.setAttribute("aria-expanded", "true");
-  notificationMenuSection.classList.add("menu-active");
-  notificationMenuIsOpen = true;
-  notificationMenuItemList.item(0).focus();
-  openOverlay();
-}
-
-function ToggleNotificationMenu() {
-  const open = notificationMenuButton.getAttribute("aria-expanded") === "true";
-
-  if (open) {
-    closeNotificationMenu();
-  } else {
-    openNotificationMenu();
-  }
-}
-
-notificationMenuButton.addEventListener("click", ToggleNotificationMenu);
-
-//  This is the functionality used for controlling the profile menu
-let profileMenuIsOpen = false;
-const profileMenuSection = document.querySelector("#profile__menu--section");
 const profileMenuButton = document.querySelector("#profile__menu--button");
-const profileMenu = document.querySelector("#profile__menu");
-const profileMenuItemList = document.querySelectorAll("#profile__menu button");
+const profileMenu = new Menu(profileMenuButton);
+const notificationMenuButton = document.querySelector("#notification__button");
+const notificationMenu = new Menu(notificationMenuButton);
 
-function navigateProfileMenu(key, menuItems, index) {
-  switch (key) {
-    case "ArrowUp":
-    case "Up":
-    case "ArrowLeft":
-    case "Left":
-      if (index > 0) {
-        menuItems.item(index - 1).focus();
-      } else {
-        menuItems.item(menuItems.length - 1).focus();
-      }
-      break;
-    case "ArrowDown":
-    case "Down":
-    case "ArrowRight":
-    case "Right":
-      if (index < menuItems.length - 1) {
-        menuItems.item(index + 1).focus();
-      } else {
-        menuItems.item(0).focus();
-      }
-      break;
-    case "Escape":
-    case "Esc":
-      closeProfileMenu();
-      break;
-  }
-}
-
-profileMenuItemList.forEach((item, index) => {
-  item.addEventListener("keyup", function (event) {
-    navigateProfileMenu(event.key, profileMenuItemList, index);
-  });
-});
-
-function closeProfileMenu() {
-  profileMenuButton.setAttribute("aria-expanded", "false");
-  profileMenuSection.classList.remove("menu-active");
-  profileMenuIsOpen = false;
-  // closeOverlay();
-  profileMenuButton.focus();
-}
-
-function openProfileMenu() {
-  profileMenuButton.setAttribute("aria-expanded", "true");
-  profileMenuSection.classList.add("menu-active");
-  profileMenuIsOpen = true;
-  profileMenuItemList.item(0).focus();
-  // openOverlay();
-}
-
-function ToggleProfileMenu() {
-  const open = profileMenuButton.getAttribute("aria-expanded") === "true";
-
-  if (open) {
-    closeProfileMenu();
-  } else {
-    openProfileMenu();
-  }
-}
-
-profileMenuButton.addEventListener("click", ToggleProfileMenu);
-
-
-
-overlay.addEventListener("click", function (event) {
-  if (notificationMenuIsOpen) {
-    closeNotificationMenu();
-  }
-});

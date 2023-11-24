@@ -152,6 +152,7 @@ body {
       border-radius: 0.75rem;
       width: 3.5rem;
       margin-right: 1rem;
+      z-index: 5;
 
       &__icon {
         height: 2.5rem;
@@ -180,6 +181,7 @@ body {
       align-items: center;
       border-radius: 0.75rem;
       border: 2px solid transparent;
+      z-index: 5;
 
       &:hover {
         background-color: var(--color-grey-100);
@@ -213,8 +215,8 @@ body {
 }
 
 .overlay {
-  background-color: rgba(255, 0, 0, 0.3);
-  // background-color: transparent;
+  // background-color: rgba(255, 0, 0, 0.3);
+  background-color: transparent;
   display: none;
   position: fixed;
   top: 0;
@@ -233,7 +235,7 @@ body {
   border: 1px solid var(--color-stroke-50);
   padding: 1.6rem;
   border-radius: 1.4rem;
-  z-index: 500;
+  z-index: 5;
   position: absolute;
   right: 1.6rem;
   margin-top: 0.8rem;
@@ -296,10 +298,9 @@ body {
   // height: 38.4rem;
   // width: 32rem;
   background-color: var(--color-background-white);
-  z-index: 500;
+  z-index: 5;
   padding: 1.6rem;
   border-radius: 1.4rem;
-  z-index: 500;
   position: absolute;
   right: 1.6rem;
   margin-top: 0.8rem;
