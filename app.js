@@ -1,4 +1,5 @@
 "use strict";
+
 // This is the functionality used for closing the Subscription Trial Modal
 
 const closeModal = document.querySelector("#close-modal");
@@ -102,5 +103,115 @@ allAccordions.forEach((accordionElement, index) => {
   const accordion = new Accordion(accordionElement);
   if (!index) {
     openAccordions.push(accordion);
+  }
+});
+
+//This is functionality that is common to both menus
+const overlay = document.querySelector("#overlay");
+function closeOverlay() {
+  overlay.classList.remove("overlay__active");
+}
+
+function openOverlay() {
+  overlay.classList.add("overlay__active");
+}
+
+// This is the functionality used for controlling the notifications menu
+
+let notificationMenuIsOpen = false;
+const notificationMenuSection = document.querySelector(
+  "#notification__menu--section"
+);
+const notificationMenuButton = document.querySelector("#notification__button");
+const notificationMenu = document.querySelector("#notification__menu");
+const notificationMenuItemList = document.querySelectorAll(
+  "#notification__menu button"
+);
+
+function navigateNotificationMenu(key, menuItems, index) {
+  switch (key) {
+    case "ArrowUp":
+    case "Up":
+    case "ArrowLeft":
+    case "Left":
+      if (index > 0) {
+        menuItems.item(index - 1).focus();
+      } else {
+        menuItems.item(menuItems.length - 1).focus();
+      }
+      break;
+    case "ArrowDown":
+    case "Down":
+    case "ArrowRight":
+    case "Right":
+      if (index < menuItems.length - 1) {
+        menuItems.item(index + 1).focus();
+      } else {
+        menuItems.item(0).focus();
+      }
+      break;
+    case "Escape":
+    case "Esc":
+      closeNotificationMenu();
+      break;
+  }
+}
+notificationMenuItemList.forEach((item, index) => {
+  item.addEventListener("keyup", function (event) {
+    navigateNotificationMenu(event.key, notificationMenuItemList,index);
+  });
+});
+
+function closeNotificationMenu() {
+  notificationMenuButton.setAttribute("aria-expanded", "false");
+  notificationMenuSection.classList.remove("menu-active");
+  notificationMenuIsOpen = false;
+  closeOverlay();
+  notificationMenuButton.focus();
+}
+
+function openNotificationMenu() {
+  notificationMenuButton.setAttribute("aria-expanded", "true");
+  notificationMenuSection.classList.add("menu-active");
+  notificationMenuIsOpen = true;
+  notificationMenuItemList.item(0).focus();
+  openOverlay();
+}
+
+function ToggleNotificationMenu() {
+  const open = notificationMenuButton.getAttribute("aria-expanded") === "true";
+
+  if (open) {
+    closeNotificationMenu();
+  } else {
+    openNotificationMenu();
+  }
+}
+
+notificationMenuButton.addEventListener("click", ToggleNotificationMenu);
+// // This is the functionality used for controlling the profile menu
+
+// // This is the functionality used for closing all menu when a user clicks in the document
+
+// const body = document.querySelector("body");
+// body.addEventListener("click", function (event) {
+//   // const isClickInsideProfileMenu = profileMenu.contains(event.target);
+//   // console.log(event.target);
+//   if(menuIsOpen){
+//     console.log("menu is open");
+//   }else{
+//     console.log("menu is closed");
+//   }
+//   // const isClickInsideNotificationMenu = notificationMenu.contains(event.target);
+
+//   // if (!isClickInsideNotificationMenu) {
+//   //   // closeProfileMenu();
+//   //   closeNotificationMenu();
+//   // }
+// });
+
+overlay.addEventListener("click", function (event) {
+  if (notificationMenuIsOpen) {
+    closeNotificationMenu();
   }
 });

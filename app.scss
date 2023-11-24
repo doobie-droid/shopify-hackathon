@@ -125,7 +125,7 @@ body {
       color: var(--color-grey-100);
       margin-left: 0.8rem;
       margin-right: -2.5rem;
-      z-index: 10;
+      z-index: 2;
       height: 1.75rem;
       width: 1.5rem;
     }
@@ -205,6 +205,97 @@ body {
       }
     }
   }
+}
+
+.overlay {
+  background-color: rgba(255, 0, 0, 0.3);
+  // background-color: transparent;
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  z-index: 4;
+
+  &__active {
+    display: block;
+  }
+}
+.notification__menu {
+  background-color: var(--color-background-white);
+  border: 1px solid var(--color-stroke-50);
+  padding: 1.6rem;
+  border-radius: 1.4rem;
+  z-index: 500;
+  position: absolute;
+  right: 1.6rem;
+  margin-top: 0.8rem;
+  display: none;
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &--card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.6rem;
+  }
+
+  &--title {
+    font-size: var(--large-font-size);
+    line-height: var(--large-line-height);
+    font-weight: var(--semibold-font-weight);
+    color: var(--color-font-dark);
+  }
+
+  &--buttongroup {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.6rem;
+    color: black;
+  }
+
+  &--banner {
+    background-color: blue;
+    padding: 1.6rem;
+    background-color: var(--color-state-hover);
+    color: var(--color-font-mid);
+    font-size: var(--medium-font-size);
+    line-height: var(--large-line-height);
+    font-weight: var(--semibold-font-weight);
+  }
+
+  &--menuitem {
+    color: var(--color-font-mid);
+    border-radius: 1px solid transparent;
+  }
+
+  &--menuitem:focus,
+  &--menuitem:active {
+    outline: none;
+    border: 1px solid var(--color-state-focused);
+    border-radius: 4px;
+    
+  }
+}
+
+.notification__menu.menu-active {
+  display: block;
+}
+
+
+.profile__menu {
+  height: 2.5rem;
+  width: 2.5rem;
+  background-color: red;
+  z-index: 500;
 }
 
 .trialModal {
@@ -413,7 +504,7 @@ body {
       // background-color: red;
       position: absolute;
       color: blue;
-      left: 0rem;      
+      left: 0rem;
       background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 32 32" fill="none"><circle cx="14" cy="12" r="12" stroke="%238a8a8a" stroke-width="2.5"  stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4 6"/></svg>');
       // background-position: center center;
       background-repeat: no-repeat;
@@ -529,3 +620,7 @@ details[open] .setup__guide--dropdown {
   transform: rotate(180deg);
   transition: transform 0.3s ease-in-out;
 }
+
+
+
+
