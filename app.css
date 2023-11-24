@@ -454,3 +454,7 @@ body {
 details[open] .setup__guide--dropdown {
   transform: rotate(180deg);
   transition: transform 0.3s ease-in-out; }
+
+.move-up {
+  transform: translateY(-8rem);
+  transition: transform 0.3s ease-in-out; }
