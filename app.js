@@ -7,7 +7,7 @@ const alertDialog = document.querySelector("#alert-dialog");
 
 const modalCloserFunction = function () {
   alertDialog.remove();
-  document.querySelector("section.setup").classList.add("move-up-setup");
+  // document.querySelector("section.setup").classList.add("move-up-setup");
 };
 
 closeModal.addEventListener("click", modalCloserFunction);
