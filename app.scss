@@ -35,6 +35,17 @@ ul {
   margin: 0;
   padding: 0;
 }
+
+@keyframes rotateForever {
+  0% {
+    transform: rotate(0deg);
+    
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 :root {
   --main-color: #3498db;
   --background-color: #ecf0f1;
@@ -479,7 +490,7 @@ body {
 
     &:focus {
       border: 1px solid var(--color-state-focused);
-      filter: none ;
+      filter: none;
       border-radius: 3px;
     }
   }
@@ -643,23 +654,52 @@ body {
       display: block;
     }
 
+    &-button {
+      background-color: transparent;
+      border: 1px solid blue;
+      // box-shadow: 4px 4px 3px 1px black;
+      transform: translate(-5px -5px);
+      position: absolute;
+      z-index: 800;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+    }
     &-icon {
-      width: 2.5rem;
-      height: 2.5rem;
+      width: 2.6rem;
+      height: 2.6rem;
       position: absolute;
       color: blue;
       left: -2.6rem;
       background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 32 32" fill="none"><circle cx="14" cy="13" r="12" stroke="%238a8a8a" stroke-width="2.5"  stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4 6"/></svg>');
       background-repeat: no-repeat;
+      transition: background 0.3s ease-in-out;
 
       &:hover {
         background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 32 32" fill="none"><circle cx="14" cy="13" r="12" stroke="%238a8a8a" stroke-width="2.5" /></svg>');
         background-repeat: no-repeat;
       }
 
+      &:active ,
+      &:focus{
+        height: 2rem;
+        width: 2rem;
+        background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 32 32" fill="none">   <path d="M26 14C26 16.3734 25.2962 18.6935 23.9776 20.6668C22.6591 22.6402 20.7849 24.1783 18.5922 25.0866C16.3995 25.9948 13.9867 26.2324 11.6589 25.7694C9.33114 25.3064 7.19295 24.1635 5.51472 22.4853C3.83649 20.8071 2.6936 18.6689 2.23058 16.3411C1.76755 14.0133 2.00519 11.6005 2.91345 9.4078C3.8217 7.21509 5.35977 5.34094 7.33316 4.02236C9.30655 2.70379 11.6266 2 14 2" stroke="%238a8a8a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+        background-repeat: no-repeat;
+        animation: rotateForever 1s linear infinite;
+      }
+
       &.accordion-checked {
         background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 32 32" fill="%231c181d"><circle cx="12.5" cy="12.5" r="12" stroke="%23000000" stroke-width="1" /> <path d="M17.2738 8.52629C17.6643 8.91682 17.6643 9.54998 17.2738 9.94051L11.4405 15.7738C11.05 16.1644 10.4168 16.1644 10.0263 15.7738L7.3596 13.1072C6.96908 12.7166 6.96908 12.0835 7.3596 11.693C7.75013 11.3024 8.38329 11.3024 8.77382 11.693L10.7334 13.6525L15.8596 8.52629C16.2501 8.13577 16.8833 8.13577 17.2738 8.52629Z" fill="%23ffffff"></path></svg>');
         background-repeat: no-repeat;
+        animation: none ;
+      }
+
+      &:focus {
+        outline: none;
+        border-radius: 0.6rem;
+        // box-shadow: 0 0 5px 2px #888888;
       }
     }
 

@@ -45,7 +45,6 @@ class Accordion {
 
   onButtonClick() {
     if (!this.open) {
-      
       this.toggle(!this.open);
     }
   }
@@ -109,7 +108,6 @@ allAccordions.forEach((accordionElement, index) => {
     openAccordions.push(accordion);
   }
 });
-
 
 //This is the functionality used for controlling the menus
 class Menu {
@@ -177,12 +175,12 @@ class Menu {
     }
   }
 
-  closeAllMenus() { 
-  if (Menu.openMenuItems.length > 0) {
-    Menu.openMenuItems.forEach((menuItem) => {
-      menuItem.closeMenu();
-    });
-  }
+  closeAllMenus() {
+    if (Menu.openMenuItems.length > 0) {
+      Menu.openMenuItems.forEach((menuItem) => {
+        menuItem.closeMenu();
+      });
+    }
   }
   navigateMenu(keyPress, index) {
     switch (keyPress) {
@@ -223,14 +221,68 @@ const notificationMenu = new Menu(notificationMenuButton);
 
 //get all the buttons
 
-const setupButtons = document.querySelectorAll(".accordion-icon");
+const checkboxButtons = document.querySelectorAll(".accordion-icon");
+class CheckBox {
+  static progress = 0;
+  static allCheckboxes = [];
 
-//if any button is clicked on  then the button clicked  class would be toggled
+  constructor(checkboxButton) {
+    this.progressBar = document.querySelector("progress");
+    this.progressBarText = document.querySelector("#progressbar__text")
+    this.checkboxButton = checkboxButton;
+    this.checkboxButton.addEventListener(
+      "click",
+      this.toggleCheckbox.bind(this)
+    );
+    CheckBox.allCheckboxes.push(this);
+  }
+
+  updateProgress(stateChange) {
+    if (stateChange == "checked") {
+      CheckBox.progress++;
+    } else {
+      CheckBox.progress--;
+    }
+    this.progressBar.value = CheckBox.progress;
+    this.progressBar.setAttribute("aria-valuenow", CheckBox.progress);
+    this.progressBarText.setAttribute("aria-label", `${CheckBox.progress} out of 5 Completed`);
+    this.progressBarText.textContent = `${CheckBox.progress} / 5 Completed`;
+
+  }
+
+  checkCheckbox() {
+    this.checkboxButton.setAttribute("aria-checked", "true");
+    this.checkboxButton.classList.add("accordion-checked");
+    this.updateProgress("checked");
+  }
+
+  uncheckCheckbox() {
+    this.checkboxButton.setAttribute("aria-checked", "false");
+    this.checkboxButton.classList.remove("accordion-checked");
+    this.updateProgress("unchecked");
+  }
+
+  toggleCheckbox() {
+    const checked = this.checkboxButton.getAttribute("aria-checked") === "true";
+
+    if (checked) {
+      this.uncheckCheckbox();
+    } else {
+      this.checkCheckbox();
+    }
+  }
+}
+
+checkboxButtons.forEach((checkboxButton) => {
+  new CheckBox(checkboxButton);
+});
 
 //if the button class was toggled on,
 //go through the list for any button that has not been toggled and focus on them
 //if there are no buttons, then just close that tab
 
-
 //every toggling of the button clicked class increases the progress value
 
+const progressBar = document.querySelector("progress");
+
+console.log(CheckBox.allCheckboxes.length);
