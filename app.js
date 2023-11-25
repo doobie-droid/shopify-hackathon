@@ -18,7 +18,7 @@ class Accordion {
   constructor(domNode) {
     this.controllerElement = domNode;
     this.controllerElementButton = this.controllerElement.querySelector(
-      "button[aria-expanded]"
+      "span[aria-expanded]"
     );
 
     this.controlledElementId =
@@ -218,4 +218,19 @@ const profileMenuButton = document.querySelector("#profile__menu--button");
 const profileMenu = new Menu(profileMenuButton);
 const notificationMenuButton = document.querySelector("#notification__button");
 const notificationMenu = new Menu(notificationMenuButton);
+
+//This is the functionality for controlling the stages of the setup process
+
+//get all the buttons
+
+const setupButtons = document.querySelectorAll(".accordion-icon");
+
+//if any button is clicked on  then the button clicked  class would be toggled
+
+//if the button class was toggled on,
+//go through the list for any button that has not been toggled and focus on them
+//if there are no buttons, then just close that tab
+
+
+//every toggling of the button clicked class increases the progress value
 
