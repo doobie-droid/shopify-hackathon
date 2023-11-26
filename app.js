@@ -125,8 +125,6 @@ class Menu {
     const menuId = this.menuButton.getAttribute("aria-controls");
     this.menu = document.querySelector(`#${menuId}`);
     this.menuItems = this.menu.querySelectorAll(`#${menuId} button`);
-
-    //I did not want to change the html or css to get the menu section so I just added the menuId as a class in the section to use for retrieving the section but I noticed coincidentally that the class for section is the same as the id for the menu
     this.menuSection = document.querySelector(`section.${menuId}`);
     this.menuButton.addEventListener("click", this.toggleMenu.bind(this));
     this.overlay.addEventListener("click", this.closeMenu.bind(this));
