@@ -45,8 +45,11 @@ ul {
   --color-grey-100: #616161;
   --color-grey-200: #322f33;
   --color-grey-300: #1c181d;
+  --color-grey-g100: #b5b5b5;
+  --color-grey-g200: #303030;
   --color-font-light: #e3e3e3;
   --color-font-mid: #616161;
+  --color-font-mid2: var(--color-grey-100);
   --color-font-dark: #475467;
   --color-stroke-50: #ebebeb;
   --color-stroke-100: #e1e1e1;
@@ -83,97 +86,102 @@ body {
   background-color: var(--color-background); }
 
 .header {
-  background-color: var(--color-grey-300);
-  padding-left: 1.6rem;
-  padding-right: 1.6rem;
-  height: 6rem;
+  background-color: #1a1a1a;
+  height: 56px;
+  padding: 12px 16px;
   color: var(--color-grey-100);
   display: flex;
   justify-content: space-between;
   align-items: center;
   min-width: fit-content; }
+  .header__logo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 7.517px; }
   .header__searchbox {
     display: flex;
+    height: 32px;
+    background-color: red;
     align-items: center;
-    flex: 0.5; }
+    padding: 8px;
+    gap: 6px;
+    border-radius: 8px;
+    border: 1px solid var(--color-stroke-200);
+    background-color: var(--color-grey-200); }
+    .header__searchbox:hover {
+      border: 1px solid var(--color-stroke-100); }
+    .header__searchbox:focus-within {
+      border: 2px solid var(--color-background-white);
+      background-color: var(--color-grey-g200); }
     .header__searchbox--input {
-      border-radius: 0.8rem;
-      font-size: var(--medium-font-size);
-      line-height: var(--large-line-height);
-      letter-spacing: var(--default-letter-spacing);
-      border: 1px solid var(--color-stroke-200);
       background-color: var(--color-grey-200);
+      border: none;
       width: 100%;
-      max-width: 48rem;
-      outline: none;
-      font-weight: 400;
-      color: var(--color-font-light);
-      padding: 0.8rem;
-      padding-left: 3.5rem; }
-      .header__searchbox--input::placeholder {
-        color: var(--color-grey-100); }
-      .header__searchbox--input:hover {
-        border: 1px solid var(--color-stroke-100); }
-      .header__searchbox--input:focus, .header__searchbox--input:active {
-        border: 1px solid white; }
+      color: var(--color-grey-g100); }
+    .header__searchbox--input:placeholder {
+      color: var(--color-grey-g100);
+      font-size: var(--medium-font-size);
+      font-weight: var(--medium-font-weight);
+      line-height: var(--large-line-height); }
+    .header__searchbox--input:focus {
+      outline: none; }
     .header__searchbox--icon {
-      color: var(--color-grey-100);
-      margin-left: 0.8rem;
-      margin-right: -2.5rem;
-      z-index: 2;
-      height: 1.75rem;
-      width: 1.5rem; }
+      background-color: var(--color-grey-200);
+      color: var(--color-grey-g100); }
+      .header__searchbox--icon svg {
+        width: 20px;
+        height: 20px; }
   .header__profile {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    cursor: pointer;
-    color: var(--color-font-light); }
-    .header__profile .notification {
-      align-self: stretch;
+    justify-content: flex-end;
+    align-items: stretch;
+    gap: 8px; }
+    .header__profile button:hover {
+      background-color: #616161;
+      transition: background-color 0.3s ease-in-out; }
+    .header__profile button:active, .header__profile button:focus {
+      background-color: var(--color-grey-50);
+      transition: background-color 0.3s ease-out; }
+    .header__profile button:focus {
+      box-shadow: 0px 0px 0px 3px var(--color-state-focused), 0px 0px 0px 1px black;
+      transition: box-shadow 0.3s ease-in; }
+    .header__profile--notification {
       display: flex;
-      align-items: center;
+      width: 32px;
+      height: 32px;
+      padding: 6px;
       justify-content: center;
-      background-color: var(--color-grey-200);
-      border-radius: 0.75rem;
-      width: 3.5rem;
-      margin-right: 1rem;
-      z-index: 5; }
-      .header__profile .notification__icon {
-        height: 2.5rem;
-        width: 2.5rem;
-        color: var(--color-font-light); }
-      .header__profile .notification:hover {
-        background-color: var(--color-grey-100); }
-      .header__profile .notification:focus, .header__profile .notification:active {
-        background-color: var(--color-grey-50); }
-      .header__profile .notification:focus {
-        outline: 2px solid var(--color-state-focused);
-        outline-offset: 1px; }
-    .header__profile .info {
-      display: flex;
-      background-color: var(--color-grey-200);
       align-items: center;
-      border-radius: 0.75rem;
-      border: 2px solid transparent;
-      z-index: 5; }
-      .header__profile .info:hover {
-        background-color: var(--color-grey-100); }
-      .header__profile .info:focus, .header__profile .info:active {
-        background-color: var(--color-grey-50); }
-      .header__profile .info:focus {
-        outline: none;
-        border: 2px solid var(--color-state-focused); }
-      .header__profile .info .profilename {
-        padding: 0.8rem;
-        font-weight: var(--medium-font-weight); }
-      .header__profile .info .avatar {
-        color: black;
-        margin-right: 0.2rem;
-        padding: 0.65rem;
-        border-radius: 0.75rem;
-        background-color: var(--color-green);
-        font-weight: var(--medium-font-weight); }
+      z-index: 5;
+      border-radius: 8px;
+      background: var(--color-grey-g200); }
+      .header__profile--notification svg {
+        color: var(--color-font-light); }
+    .header__profile--info {
+      display: flex;
+      padding: 2px 2px 2px 8px;
+      align-items: center;
+      gap: 8px;
+      border-radius: 8px;
+      z-index: 5;
+      background: var(--grey-grey-200, #303030);
+      font-size: var(--small-font-size);
+      font-weight: var(--medium-font-weight);
+      line-height: var(--small-line-height); }
+      .header__profile--info .profilename {
+        color: var(--color-font-light); }
+      .header__profile--info .avatar {
+        display: flex;
+        height: 28px;
+        padding: 9px 5px 10px 5px;
+        justify-content: center;
+        align-items: center;
+        border-radius: 6px;
+        background: var(--color-green);
+        color: rgba(0, 0, 0, 0.4);
+        text-align: center; }
 
 .overlay {
   background-color: transparent;
