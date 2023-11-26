@@ -26,9 +26,11 @@ class Accordion {
 
     this.controlledElement = document.getElementById(this.controlledElementId);
 
+    console.log(this.controlledElementId);
     const controlledIndex = this.controlledElementId.charAt(
       this.controlledElementId.length - 1
     );
+    console.log(controlledIndex);
     this.controlledElementImage = document.querySelector(
       `#accordion-image-${controlledIndex}`
     );
@@ -58,6 +60,8 @@ class Accordion {
     this.open = open;
     // update DOM
     this.controllerElementButton.setAttribute("aria-expanded", `${open}`);
+    console.log(this.controlledElement);
+    console.log(this.open);
     if (open) {
       this.controlledElement.removeAttribute("hidden");
       this.controlledElement.nextElementSibling.removeAttribute("hidden");
@@ -76,7 +80,7 @@ class Accordion {
     }
   }
 
-  open() {
+  openPanel() {
     this.toggle(true);
   }
 
@@ -102,8 +106,10 @@ class Accordion {
 
 // initialize all accordions
 const allAccordions = document.querySelectorAll(".accordion h3");
+const AllAccordionObjects = [];
 allAccordions.forEach((accordionElement, index) => {
   const accordion = new Accordion(accordionElement);
+  AllAccordionObjects.push(accordion);
   if (!index) {
     openAccordions.push(accordion);
   }
@@ -225,15 +231,21 @@ const checkboxButtons = document.querySelectorAll(".accordion-icon");
 class CheckBox {
   static progress = 0;
   static allCheckboxes = [];
+  static checkBoxes = 0;
 
   constructor(checkboxButton) {
+    this.checkCheckboxNumber = CheckBox.checkBoxes++;
     this.progressBar = document.querySelector("progress");
-    this.progressBarText = document.querySelector("#progressbar__text")
+    this.progressBarText = document.querySelector("#progressbar__text");
     this.checkboxButton = checkboxButton;
     this.checkboxButton.addEventListener(
       "click",
       this.toggleCheckbox.bind(this)
     );
+    this.checkboxButton.addEventListener("keyup", (event) => {
+      this.navigateCheckBox(event.key);
+    });
+
     CheckBox.allCheckboxes.push(this);
   }
 
@@ -245,15 +257,21 @@ class CheckBox {
     }
     this.progressBar.value = CheckBox.progress;
     this.progressBar.setAttribute("aria-valuenow", CheckBox.progress);
-    this.progressBarText.setAttribute("aria-label", `${CheckBox.progress} out of 5 Completed`);
+    this.progressBarText.setAttribute(
+      "aria-label",
+      `${CheckBox.progress} out of 5 Completed`
+    );
     this.progressBarText.textContent = `${CheckBox.progress} / 5 Completed`;
-
   }
 
   checkCheckbox() {
     this.checkboxButton.setAttribute("aria-checked", "true");
     this.checkboxButton.classList.add("accordion-checked");
     this.updateProgress("checked");
+    setTimeout(() => {
+      
+      this.switchFocusToNextUncheckedCheckbox();
+    }, 100);
   }
 
   uncheckCheckbox() {
@@ -271,6 +289,63 @@ class CheckBox {
       this.checkCheckbox();
     }
   }
+
+  switchFocusToNextUncheckedCheckbox() {
+    let emptyCheckBoxFound = false;
+    let emptyCheckBoxIndex = 0;
+    CheckBox.allCheckboxes.forEach((checkbox, index) => {
+      if (
+        checkbox.checkboxButton.getAttribute("aria-checked") === "false" &&
+        !emptyCheckBoxFound
+      ) {
+        emptyCheckBoxFound = true;
+        emptyCheckBoxIndex = index;
+        return;
+      }
+    });
+    CheckBox.allCheckboxes[emptyCheckBoxIndex].checkboxButton.focus();
+    AllAccordionObjects[emptyCheckBoxIndex].openPanel();
+   
+  }
+
+  switchFocusToPreviousCheckbox() {
+    if (this.checkCheckboxNumber > 0) {
+      CheckBox.allCheckboxes[
+        this.checkCheckboxNumber - 1
+      ].checkboxButton.focus();
+    } else {
+      CheckBox.allCheckboxes[
+        CheckBox.allCheckboxes.length - 1
+      ].checkboxButton.focus();
+    }
+  }
+
+  switchFocusToNextCheckbox() {
+    if (this.checkCheckboxNumber < CheckBox.allCheckboxes.length - 1) {
+      CheckBox.allCheckboxes[
+        this.checkCheckboxNumber + 1
+      ].checkboxButton.focus();
+    } else {
+      CheckBox.allCheckboxes[0].checkboxButton.focus();
+    }
+  }
+
+  navigateCheckBox(keyPress) {
+    switch (keyPress) {
+      case "ArrowUp":
+      case "Up":
+      case "ArrowLeft":
+      case "Left":
+        this.switchFocusToPreviousCheckbox();
+        break;
+      case "ArrowDown":
+      case "Down":
+      case "ArrowRight":
+      case "Right":
+        this.switchFocusToNextCheckbox();
+        break;
+    }
+  }
 }
 
 checkboxButtons.forEach((checkboxButton) => {
@@ -284,5 +359,3 @@ checkboxButtons.forEach((checkboxButton) => {
 //every toggling of the button clicked class increases the progress value
 
 const progressBar = document.querySelector("progress");
-
-console.log(CheckBox.allCheckboxes.length);
