@@ -151,7 +151,7 @@
                 </li>
             </div>
 
-            <!-- <div role="presentation" class="profile__menu--dividerline"></div> -->
+            <div role="presentation" class="profile__menu--dividerline"></div>
             <div class="profile__menu--helpsection">
                 <li>
                     <button role="menuitem" class="profile__menu--menuitem">Help Center</button>
@@ -170,7 +170,7 @@
                     <button role="menuitem" class="profile__menu--menuitem">Keyboard shortcuts</button>
                 </li>
             </div>
-            <!-- <div role="presentation" class="profile__menu--dividerline"></div> -->
+            <div role="presentation" class="profile__menu--dividerline"></div>
             <div class="profile__menu--accountsection">
                 <div class="profile__menu--userdetails">
                     <p class="fw-600">David Micheal</p>
@@ -187,222 +187,107 @@
         </ul>
     </section>
 
-    <section class="trialModal">
-        <div class="container" id="alert-dialog" role="" aria-labelledby="dialoglabel"
-            aria-describedby="dialogdescribe">
-            <h2 id="dialoglabel" hidden>Subscription </h2>
-            <div id="dialogdescribe" class="trialModal__text">
-                <p>Extend your trial for $1/month for 3 months on select
-                    plans.
-                </p>
+    <section class="app">
+        <section class="trialModal">
+            <div class="trialModal__text">
+                <span>Extend your trial for $1/month for 3 months on select plans.</span>
+                <button type="button" aria-label="Close Subscription Modal" class="trialModal__button--close"
+                    id="close-modal2">
+                    <svg aria-hidden="true" width="41" height="40" viewBox="0 0 21 20" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M14.4697 15.0303C14.7626 15.3232 15.2374 15.3232 15.5303 15.0303C15.8232 14.7374 15.8232 14.2626 15.5303 13.9697L11.5607 10L15.5303 6.03033C15.8232 5.73744 15.8232 5.26256 15.5303 4.96967C15.2374 4.67678 14.7626 4.67678 14.4697 4.96967L10.5 8.93934L6.53033 4.96967C6.23744 4.67678 5.76256 4.67678 5.46967 4.96967C5.17678 5.26256 5.17678 5.73744 5.46967 6.03033L9.43934 10L5.46967 13.9697C5.17678 14.2626 5.17678 14.7374 5.46967 15.0303C5.76256 15.3232 6.23744 15.3232 6.53033 15.0303L10.5 11.0607L14.4697 15.0303Z"
+                            fill="currentcolor" />
+                    </svg>
+                </button>
             </div>
-            <a href="https://www.shopify.com/pricing" role="button" class="trialModal__button" id="select-plan">Select a
-                plan</a>
-            <button type="button" aria-label="Close" class="trialModal__button__close" id="close-modal">
-                <svg role="presentation" width="21" height="20" viewBox="0 0 21 20" fill="none"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        d="M14.4697 15.0303C14.7626 15.3232 15.2374 15.3232 15.5303 15.0303C15.8232 14.7374 15.8232 14.2626 15.5303 13.9697L11.5607 10L15.5303 6.03033C15.8232 5.73744 15.8232 5.26256 15.5303 4.96967C15.2374 4.67678 14.7626 4.67678 14.4697 4.96967L10.5 8.93934L6.53033 4.96967C6.23744 4.67678 5.76256 4.67678 5.46967 4.96967C5.17678 5.26256 5.17678 5.73744 5.46967 6.03033L9.43934 10L5.46967 13.9697C5.17678 14.2626 5.17678 14.7374 5.46967 15.0303C5.76256 15.3232 6.23744 15.3232 6.53033 15.0303L10.5 11.0607L14.4697 15.0303Z"
-                        fill="currentcolor" />
-                </svg>
-            </button>
-        </div>
+            <div class="trialModal__buttongroup">
+                <a href="https://www.shopify.com/pricing" role="button" class="trialModal__button"
+                    aria-label="Click Here to Select a Plan" id="select-plan">Select a
+                    plan</a>
+                <button type="button" aria-label="Close Subscription Modal" class="trialModal__button--close"
+                    id="close-modal">
+                    <svg aria-hidden="true" width="41" height="40" viewBox="0 0 21 20" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M14.4697 15.0303C14.7626 15.3232 15.2374 15.3232 15.5303 15.0303C15.8232 14.7374 15.8232 14.2626 15.5303 13.9697L11.5607 10L15.5303 6.03033C15.8232 5.73744 15.8232 5.26256 15.5303 4.96967C15.2374 4.67678 14.7626 4.67678 14.4697 4.96967L10.5 8.93934L6.53033 4.96967C6.23744 4.67678 5.76256 4.67678 5.46967 4.96967C5.17678 5.26256 5.17678 5.73744 5.46967 6.03033L9.43934 10L5.46967 13.9697C5.17678 14.2626 5.17678 14.7374 5.46967 15.0303C5.76256 15.3232 6.23744 15.3232 6.53033 15.0303L10.5 11.0607L14.4697 15.0303Z"
+                            fill="currentcolor" />
+                    </svg>
+                </button>
+            </div>
+
+        </section>
+        <section class="setup">
+            <div class="setup__header">
+                <div class="setup__header--guide">
+                    <div class="setup__header--guidetext">
+                        <h3 class="setup__header--guidetitle">Setup guide</h3>
+                        <p class="setup__header--guidedescription">Use this personalized guide to get your store up and
+                            running.</p>
+                    </div>
+                    <div class="setup__header--progressbar">
+                        <span aria-live="assertive" id="progressbar__text" aria-label="0 out of 5 completed">
+                            0 / 5 completed
+                        </span>
+                        <progress role="progressbar" value="0" max="5" class="setup__progress__bar" aria-valuemin="1"
+                            aria-valuemax="5" aria-valuenow="0">
+                        </progress>
+
+                    </div>
+
+
+                </div>
+                <button class="setup__header--dropdown" id="menu-dropdown" aria-haspopup="true" aria-expanded="false"
+                    aria-controls="setup__menu" aria-label="Setup Guide Menu">
+                    <svg aria-hidden="true" width="41" height="40" viewBox="0 0 21 20" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M15.0303 12.2803C14.7374 12.5732 14.2626 12.5732 13.9697 12.2803L10.5 8.81066L7.03033 12.2803C6.73744 12.5732 6.26256 12.5732 5.96967 12.2803C5.67678 11.9874 5.67678 11.5126 5.96967 11.2197L9.96967 7.21967C10.2626 6.92678 10.7374 6.92678 11.0303 7.21967L15.0303 11.2197C15.3232 11.5126 15.3232 11.9874 15.0303 12.2803Z"
+                            fill="currentcolor" />
+                    </svg>
+                </button>
+
+            </div>
+            <div class="setup__body menu-active">
+                <div class="setup__menuitem accordion-active">
+                    <div class="setup__menuitem--content">
+                        <button role="checkbox" aria-checked="false" class="accordion-checkbox"
+                            aria-label="Customize your online store">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 32 32"
+                                fill="none">
+                                <circle cx="16" cy="16" r="12" stroke="#8a8a8a" stroke-width="2.5"
+                                    stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4 6" />
+                            </svg>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-header"> 
+                                Customize your online store
+                            </div>
+                            <div class="accordion-description">
+                                Choose a theme and add your logo, colors, and images to reflect your brand. <a
+                                    href="https://help.shopify.com/en/manual/online-store/themes/customizing-themes">Learn
+                                    more</a>
+                            </div>
+                            <button class="setup__guide--button">
+                                Customize theme
+                            </button>
+
+                        </div>
+                    </div>
+                    <div class="setup__menuitem--image">
+                        <img src="https://crushingit.tech/hackathon-assets/customise-store.png" alt="">
+                    </div>
+                </div>
+                <div class="setup__menuitem">2</div>
+                <div class="setup__menuitem">3</div>
+                <div class="setup__menuitem">4</div>
+                <div class="setup__menuitem">5</div>
+            </div>
+        </section>
     </section>
 
-    <section class="setup">
-        <details class="container" open>
-            <summary class="setup__guide">
-                <h4 class="setup__guide--title">Setup Guide</h4>
-                <p class="setup__guide--text">Use this personalized guide to get your store up and running.</p>
-                <div class="setup__guide--progressbar">
-                    <span aria-live="assertive" id="progressbar__text" aria-label="0 out of 5 completed">
-                        0 / 5 completed
-                    </span>
-                    <progress role="progressbar" value="0" max="5" class="setup__progress__bar" aria-valuemin="1"
-                        aria-valuemax="5" aria-valuenow="0">
-                    </progress></div>
-                <div role="presentation" class="setup__guide--dropdown"></div>
-            </summary>
-            <div id="accordionGroup" class="accordion ">
-                <div class="accordion-card accordion-card-initial">
-                    <div class="accordion-text">
-                        <h3>
-                            <span aria-expanded="true" class="accordion-trigger " aria-controls="sect1"
-                                id="accordion1id">
-                                <span class="accordion-title">
-                                    <span class="accordion-title-text">Customize Your Online Store</span>
-
-                                    <button role="checkbox" aria-checked="false" class="accordion-icon"
-                                        aria-label="Customize your online store">
-
-                                    </button>
-
-                                </span>
-                            </span>
-                        </h3>
-                        <div id="sect1" role="region" aria-labelledby="accordion1id" class="accordion-panel ">
-                            <div>
-                                <p>Choose a theme and add your logo, colors, and images to reflect your brand.
-                                    <a href="https://help.shopify.com/en/manual/online-store/themes/customizing-themes">Learn
-                                        More</a>
-                                </p>
-                            </div>
-                        </div>
-                        <div role="region" aria-labelledby="accordion1id">
-                            <button class="accordion-panel-button">Customize theme</button>
-                        </div>
-                    </div>
-                    <div class="accordion-image" id="accordion-image-1">
-                        <!-- <img src="https://crushingit.tech/hackathon-assets/customise-store.png"
-                            alt="Picture showing customization of a store"> -->
-                        <img src="./28.png" alt="">
-                    </div>
-                </div>
-                <div>
-                    <div class="accordion-text">
-                        <h3>
-                            <span aria-expanded="false" class="accordion-trigger" aria-controls="sect2"
-                                id="accordion2id">
-                                <span class="accordion-title">
-                                    Add your first Product
-                                    <button role="checkbox" aria-checked="false" class="accordion-icon"
-                                        aria-label="Add your first product">
-
-                                    </button>
-                                </span>
-                            </span>
-                        </h3>
-                        <div id="sect2" role="region" aria-labelledby="accordion2id" class="accordion-panel" hidden="">
-                            <div>
-                                <p>Write a description, add photos, and set pricing for the products you plan to sell.
-                                    <a href="https://help.shopify.com/en/manual/products/add-update-products">Learn
-                                        More</a>
-                                </p>
-                            </div>
-                        </div>
-                        <div hidden>
-                            <button class="accordion-panel-button">Add Product</button>
-                            <button class="accordion-panel-button-transparent">Import Product</button>
-                        </div>
-                    </div>
-                    <div hidden class="accordion-image" id="accordion-image-2">
-                        <!-- <img src="https://crushingit.tech/hackathon-assets/product.png"
-                            alt="Picture showing product examples"> -->
-                        <img src="./28.png" alt="">
-                    </div>
-                </div>
-                <div>
-                    <div class="accordion-text">
-                        <h3>
-                            <span aria-expanded="false" class="accordion-trigger" aria-controls="sect3"
-                                id="accordion3id">
-                                <span class="accordion-title">
-                                    Add a custom domain
-                                    <button role="checkbox" aria-checked="false" class="accordion-icon"
-                                        aria-label="Add a custom domain">
-
-                                    </button>
-                                </span>
-                            </span>
-                        </h3>
-                        <div id="sect3" role="region" aria-labelledby="accordion3id" class="accordion-panel" hidden="">
-                            <div>
-                                <p>
-                                    Your current domain is 222219.myshopify.com but you can add a custom domain to help
-                                    customers find
-                                    your
-                                    online store.
-                                    <a href="https://help.shopify.com/en/manual/domains">Learn more</a>
-                                </p>
-                            </div>
-                        </div>
-                        <div hidden>
-                            <button class="accordion-panel-button">Add domain</button>
-                        </div>
-                    </div>
-                    <div hidden class="accordion-image" id="accordion-image-3">
-                        <!-- <img src="https://crushingit.tech/hackathon-assets/website.png"
-                            alt="Picture showing web browser"> -->
-                        <img src="./28.png" alt="">
-                    </div>
-                </div>
-                <div>
-                    <div class="accordion-text">
-                        <h3>
-                            <span aria-expanded="false" class="accordion-trigger" aria-controls="sect4"
-                                id="accordion4id">
-                                <span class="accordion-title">
-                                    Name your store
-                                    <button role="checkbox" aria-checked="false" class="accordion-icon"
-                                        aria-label="Name your store">
-
-                                    </button>
-                                </span>
-                            </span>
-                        </h3>
-                        <div id="sect4" role="region" aria-labelledby="accordion4id" class="accordion-panel" hidden="">
-                            <div>
-                                <p>
-                                    Your temporary store name is currently Davii collections. The store name appears in
-                                    your
-                                    admin and
-                                    your online store.
-                                    <a
-                                        href="https://help.shopify.com/manual/intro-to-shopify/initial-setup/setup-business-settings#set-or-change-your-online-store-name-and-legal-business-name">Learn
-                                        more</a>
-                                </p>
-                            </div>
-                        </div>
-                        <div hidden>
-                            <button class="accordion-panel-button">Name store</button>
-                        </div>
-                    </div>
-                    <div hidden class="accordion-image" id="accordion-image-4">
-                        <!-- <img src="https://crushingit.tech/hackathon-assets/name-store.png"
-                            alt="Picture showing examples of store names"> -->
-                        <img src="./28.png" alt="">
-                    </div>
-                </div>
-                <div>
-                    <div class="accordion-text">
 
 
-                        <h3>
-                            <span aria-expanded="false" class="accordion-trigger" aria-controls="sect5"
-                                id="accordion5id">
-                                <span class="accordion-title">
-                                    Set up a payment provider
-                                    <button role="checkbox" aria-checked="false" class="accordion-icon"
-                                        aria-label="Set up a Payment Provider">
-
-                                    </button>
-                                </span>
-                            </span>
-                        </h3>
-                        <div id="sect5" role="region" aria-labelledby="accordion5id" class="accordion-panel" hidden="">
-                            <div>
-                                <p>
-                                    Choose a payment provider to start accepting payments. You’ll need to create an
-                                    account
-                                    with the
-                                    payment provider and set it up with your Shopify store.
-                                    <a href="https://help.shopify.com/en/manual/payments">Learn more</a>
-                                </p>
-                            </div>
-                        </div>
-                        <div hidden>
-                            <button class="accordion-panel-button">Set up payment</button>
-                        </div>
-                    </div>
-                    <div hidden class="accordion-image" id="accordion-image-5">
-                        <!-- <img src="https://crushingit.tech/hackathon-assets/payment.png"
-                            alt="Picture showing credit cards"> -->
-                        <img src="./28.png" alt="">
-                    </div>
-                </div>
-            </div>
-        </details>
-    </section>
 
     <script src="./app.js"></script>
 </body>

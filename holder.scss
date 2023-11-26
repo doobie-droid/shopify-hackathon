@@ -1,0 +1,313 @@
+.setup {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  .container {
+    background-color: pink;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 0 auto;
+    width: 56vw;
+    padding-top: 1.55rem;
+    padding-bottom: 0.8rem;
+    background-color: var(--color-background-white);
+    color: var(--color-font-light);
+    border-radius: 2rem;
+    position: relative;
+  }
+
+  summary {
+    display: block;
+    cursor: pointer;
+  }
+
+  &__guide {
+    width: 100%;
+    color: var(--color-font-dark);
+    padding-left: 1.6rem;
+    padding-right: 1.6rem;
+    margin-bottom: 1.5rem;
+
+    &--title {
+      font-size: var(--large-font-size);
+      line-height: var(--large-line-height);
+      font-weight: var(--semibold-font-weight);
+      width: 100%;
+      margin-bottom: 0.4rem;
+    }
+
+    &--text {
+      font-size: var(--medium-font-size);
+      font-weight: var(--regular-font-weight);
+      line-height: var(--large-line-height);
+      width: 100%;
+      margin-bottom: 1.6rem;
+    }
+
+    &--progressbar {
+      width: 100%;
+      font-size: var(--small-font-size);
+      line-height: var(--small-line-height);
+      font-weight: var(--regular-font-weight);
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+
+      progress {
+        width: 7.2rem;
+        height: 0.4rem;
+        border-radius: 2.8rem;
+
+        &::-webkit-progress-bar {
+          background-color: var(--color-font-light);
+          border-radius: 2.8rem;
+        }
+
+        &::-webkit-progress-value {
+          background-color: var(--color-grey-300);
+          border-radius: 2.8rem;
+        }
+      }
+    }
+
+    &--dropdown {
+      width: 20px;
+      height: 20px;
+      font-size: 1.5rem;
+      display: block;
+      float: right;
+      margin-top: -1rem;
+      margin-right: 1rem;
+      background-image: url(https://crushingit.tech/hackathon-assets/icon-arrow-down.svg);
+      border-radius: 5px;
+      background-position: center center;
+      background-repeat: no-repeat;
+      position: absolute;
+      right: 0.5rem;
+      top: 2.9rem;
+      transition: transform 0.3s ease-in-out;
+
+      &:hover {
+        background-color: var(--color-state-hover);
+      }
+
+      &:active {
+        background-color: var(--color-state-pressed);
+      }
+
+      &:focus {
+        outline: none;
+        border: 2px solid var(--color-state-focused);
+      }
+    }
+  }
+
+  .accordion {
+    width: 100%;
+
+    & .accordion-card:last-child {
+      margin-bottom: 0;
+    }
+
+    & > div {
+      margin-bottom: 1.5rem;
+    }
+    &-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    &-image {
+      width: 15.6rem;
+      height: 12rem;
+      right: 0;
+      top: 0;
+      background-color: inherit;
+      -webkit-mask-image: linear-gradient(
+        black,
+        black 80%,
+        transparent,
+        transparent 90%
+      );
+      mask-image: linear-gradient(
+        black,
+        black 80%,
+        transparent,
+        transparent 90%
+      );
+      mask-mode: alpha;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+    &-trigger {
+      color: var(--color-font-dark);
+      width: 75%;
+      font-size: var(--medium-font-size);
+      line-height: var(--large-line-height);
+      font-weight: var(--semibold-font-weight);
+      position: relative;
+      margin-left: 4.4rem;
+      cursor: pointer;
+      margin-bottom: 0.8rem;
+      display: block;
+    }
+
+    &-button {
+      background-color: transparent;
+      border: 1px solid blue;
+      // box-shadow: 4px 4px 3px 1px black;
+      transform: translate(-5px -5px);
+      position: absolute;
+      z-index: 800;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+    }
+    &-icon {
+      width: 2rem;
+      height: 2rem;
+      position: absolute;
+      color: blue;
+      left: -2.6rem;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 32 32" fill="none"><circle cx="14" cy="13" r="12" stroke="%238a8a8a" stroke-width="2.5"  stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4 6"/></svg>');
+      background-repeat: no-repeat;
+      transition: background 0.3s ease-in-out;
+
+      &:hover {
+        background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 32 32" fill="none"><circle cx="14" cy="13" r="12" stroke="%238a8a8a" stroke-width="2.5" /></svg>');
+        background-repeat: no-repeat;
+      }
+
+      &:active,
+      &:focus {
+        background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 32 32" fill="none">   <path d="M26 14C26 16.3734 25.2962 18.6935 23.9776 20.6668C22.6591 22.6402 20.7849 24.1783 18.5922 25.0866C16.3995 25.9948 13.9867 26.2324 11.6589 25.7694C9.33114 25.3064 7.19295 24.1635 5.51472 22.4853C3.83649 20.8071 2.6936 18.6689 2.23058 16.3411C1.76755 14.0133 2.00519 11.6005 2.91345 9.4078C3.8217 7.21509 5.35977 5.34094 7.33316 4.02236C9.30655 2.70379 11.6266 2 14 2" stroke="%238a8a8a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+        background-repeat: no-repeat;
+        animation: rotateForever 1s linear infinite;
+      }
+
+      &.accordion-checked {
+        background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 32 32" fill="%231c181d"><circle cx="12.5" cy="12.5" r="12" stroke="%23000000" stroke-width="1" /> <path d="M17.2738 8.52629C17.6643 8.91682 17.6643 9.54998 17.2738 9.94051L11.4405 15.7738C11.05 16.1644 10.4168 16.1644 10.0263 15.7738L7.3596 13.1072C6.96908 12.7166 6.96908 12.0835 7.3596 11.693C7.75013 11.3024 8.38329 11.3024 8.77382 11.693L10.7334 13.6525L15.8596 8.52629C16.2501 8.13577 16.8833 8.13577 17.2738 8.52629Z" fill="%23ffffff"></path></svg>');
+        background-repeat: no-repeat;
+        animation: none;
+
+        &:focus {
+          border: 2px solid var(--color-state-focused);
+          border-radius: 6px;
+        }
+      }
+
+      &:focus {
+        outline: none;
+        border-radius: 0.6rem;
+        // box-shadow: 0 0 5px 2px #888888;
+      }
+    }
+
+    &-card {
+      background-color: var(--color-special-2);
+      border-radius: 1.5rem;
+      padding-top: 0.8rem;
+      padding-bottom: 1.2rem;
+      padding-left: 36px;
+      padding-right: 0.8rem;
+      display: flex;
+      align-items: stretch;
+      margin-bottom: 0;
+      margin-top: 1rem;
+      margin-left: 0.8rem;
+      margin-right: 0.8rem;
+
+      .accordion-trigger {
+        margin-left: 0;
+      }
+    }
+
+    &-panel {
+      color: var(--color-font-mid);
+      font-weight: var(--medium-font-weight);
+      font-size: var(--medium-font-size);
+      line-height: var(--large-line-height);
+      width: 100%;
+
+      a {
+        color: var(--color-state-focused);
+        font-size: var(--large-font-size);
+        font-weight: var(--medium-font-weight);
+        text-decoration: none;
+      }
+
+      a:visited {
+        text-decoration: none;
+      }
+
+      &-button {
+        background-color: var(--color-special-3);
+        color: var(--color-font-light);
+        border-radius: 0.6rem;
+        font-size: var(--small-font-size);
+        line-height: var(--small-line-height);
+        letter-spacing: var(--default-letter-spacing);
+        font-weight: var(--semibold-font-weight);
+        border-top: 1.5px solid var(--color-stroke-200);
+        border-left: 1.5px solid var(--color-stroke-200);
+        border-right: 1.5px solid var(--color-stroke-200);
+        border-bottom: none;
+        padding: 0.3rem 0.6rem;
+        box-shadow: 0 2px 0px 0px rgba(0, 0, 0, 1),
+          0 1px 0 1.5px rgba(33, 33, 33, 1), 0 0 0 1.5px rgba(33, 33, 33, 1);
+      }
+
+      &-button:hover {
+        background-color: var(--color-special-4);
+      }
+
+      &-button:active {
+        outline: none;
+        background-color: var(--color-special-5);
+        box-shadow: inset 0 3px 0 0 rgba(0, 0, 0, 1),
+          0 0 0 1.5px rgba(33, 33, 33, 1);
+        transition: box-shadow 0.5s ease-in-out;
+      }
+
+      &-button:focus {
+        background-color: var(--color-special-3);
+        box-shadow: inset 0 0 0 1.5px rgba(33, 33, 33, 1),
+          0 0 0 3px rgba(255, 255, 255, 1), 0 0 0 5px rgba(0, 86, 198, 1);
+      }
+
+      &-button-transparent {
+        color: var(--color-font-dark);
+        font-size: var(--small-font-size);
+        line-height: var(--small-line-height);
+        font-weight: var(--semibold-font-weight);
+        margin-left: 2.5rem;
+        border-radius: 0.6rem;
+        padding: 0.3rem 0.6rem;
+      }
+
+      &-button-transparent:hover {
+        background-color: var(--color-special-6);
+      }
+
+      &-button-transparent:active {
+        background-color: var(--color-special-7);
+      }
+
+      &-button-transparent:focus {
+        outline: none;
+        background-color: var(--color-background-white);
+        border: 2px solid var(--color-state-focused);
+      }
+    }
+  }
+}
+
+details[open] .setup__guide--dropdown {
+  transform: rotate(180deg);
+  transition: transform 0.3s ease-in-out;
+}

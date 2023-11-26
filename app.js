@@ -1,120 +1,4 @@
 "use strict";
-
-// This is the functionality used for closing the Subscription Trial Modal
-
-const closeModal = document.querySelector("#close-modal");
-const trialModalSection = document.querySelector("section.trialModal");
-
-const modalCloserFunction = function () {
-  trialModalSection.remove();
-  document.querySelector("section.setup").classList.add("move-up-setup");
-};
-
-closeModal.addEventListener("click", modalCloserFunction);
-
-//This is the functionality used for controlling the accordion menu
-let openAccordions = [];
-class Accordion {
-  constructor(domNode) {
-    this.controllerElement = domNode;
-    this.controllerElementButton = this.controllerElement.querySelector(
-      "span[aria-expanded]"
-    );
-
-    this.controlledElementId =
-      this.controllerElementButton.getAttribute("aria-controls");
-
-    this.controlledElement = document.getElementById(this.controlledElementId);
-
-    console.log(this.controlledElementId);
-    const controlledIndex = this.controlledElementId.charAt(
-      this.controlledElementId.length - 1
-    );
-    console.log(controlledIndex);
-    this.controlledElementImage = document.querySelector(
-      `#accordion-image-${controlledIndex}`
-    );
-
-    this.open =
-      this.controllerElementButton.getAttribute("aria-expanded") === "true";
-
-    // add event listeners
-    this.controllerElementButton.addEventListener(
-      "click",
-      this.onButtonClick.bind(this)
-    );
-  }
-
-  onButtonClick() {
-    if (!this.open) {
-      this.toggle(!this.open);
-    }
-  }
-
-  toggle(open) {
-    // if the state is already set as requested, do nothing
-    if (open === this.open) {
-      return;
-    }
-    // update state
-    this.open = open;
-    // update DOM
-    this.controllerElementButton.setAttribute("aria-expanded", `${open}`);
-    console.log(this.controlledElement);
-    console.log(this.open);
-    if (open) {
-      this.controlledElement.removeAttribute("hidden");
-      this.controlledElement.nextElementSibling.removeAttribute("hidden");
-      this.controlledElement.parentElement.parentElement.classList.add(
-        "accordion-card"
-      );
-      this.controlledElementImage.removeAttribute("hidden");
-      this.closeOtherOpenAccordions();
-    } else {
-      this.controlledElement.setAttribute("hidden", "");
-      this.controlledElement.nextElementSibling.setAttribute("hidden", "");
-      this.controlledElement.parentElement.parentElement.classList.remove(
-        "accordion-card"
-      );
-      this.controlledElementImage.setAttribute("hidden", "");
-    }
-  }
-
-  openPanel() {
-    this.toggle(true);
-  }
-
-  close() {
-    this.toggle(false);
-  }
-
-  closeOtherOpenAccordions() {
-    openAccordions.push(this);
-    if (openAccordions.length > 0) {
-      const tempOpenAccordions = [];
-      openAccordions.forEach((accordion, index) => {
-        if (accordion.controlledElementId == this.controlledElementId) {
-          tempOpenAccordions.push(accordion);
-        } else {
-          accordion.close();
-        }
-      });
-      openAccordions = tempOpenAccordions;
-    }
-  }
-}
-
-// initialize all accordions
-const allAccordions = document.querySelectorAll(".accordion h3");
-const AllAccordionObjects = [];
-allAccordions.forEach((accordionElement, index) => {
-  const accordion = new Accordion(accordionElement);
-  AllAccordionObjects.push(accordion);
-  if (!index) {
-    openAccordions.push(accordion);
-  }
-});
-
 //This is the functionality used for controlling the menus
 class Menu {
   static openMenuItems = [];
@@ -221,6 +105,153 @@ const profileMenu = new Menu(profileMenuButton);
 const notificationMenuButton = document.querySelector("#notification__button");
 const notificationMenu = new Menu(notificationMenuButton);
 
+// This is the functionality used for closing the Subscription Trial Modal
+
+const closeModal = document.querySelector("#close-modal");
+const closeModal2 = document.querySelector("#close-modal2");
+const trialModalSection = document.querySelector("section.trialModal");
+
+const modalCloserFunction = function () {
+  trialModalSection.remove();
+};
+
+closeModal.addEventListener("click", modalCloserFunction);
+closeModal2.addEventListener("click", modalCloserFunction);
+
+// //This is the functionality for opening and closing the setup Accordion Menu
+// class AccordionMenu {
+//   constructor(menuPopupButton) {
+//     this.menuPopupButton = menuPopupButton;
+//     this.menuPopupButton.addEventListener("click", this.toggleMenu.bind(this));
+//   }
+
+//   openMenu() { 
+//     this.menuPopupButton.setAttribute("aria-expanded", "true");
+//     this.menuPopupButton.parentElement.classList.add("menu-active");
+//   }
+
+//   closeMenu() {
+//     this.menuPopupButton.setAttribute("aria-expanded", "false");
+//     this.menuPopupButton.parentElement.classList.remove("menu-active");
+//   }
+
+//   toggleMenu() { 
+//     const open = this.menuPopupButton.getAttribute("aria-expanded") === "true";
+
+//     if (open) {
+//       this.closeMenu();
+//     } else {
+//       this.openMenu();
+//     }
+//   }
+// }
+
+// const dropDown = document.querySelector("#menu-dropdown");
+// const AccordionMenuObject = new AccordionMenu(dropDown);
+
+//This is the functionality used for controlling the accordion menu
+let openAccordions = [];
+class Accordion {
+  constructor(domNode) {
+    this.controllerElement = domNode;
+    this.controllerElementButton = this.controllerElement.querySelector(
+      "span[aria-expanded]"
+    );
+
+    this.controlledElementId =
+      this.controllerElementButton.getAttribute("aria-controls");
+
+    this.controlledElement = document.getElementById(this.controlledElementId);
+
+    console.log(this.controlledElementId);
+    const controlledIndex = this.controlledElementId.charAt(
+      this.controlledElementId.length - 1
+    );
+    console.log(controlledIndex);
+    this.controlledElementImage = document.querySelector(
+      `#accordion-image-${controlledIndex}`
+    );
+
+    this.open =
+      this.controllerElementButton.getAttribute("aria-expanded") === "true";
+
+    // add event listeners
+    this.controllerElementButton.addEventListener(
+      "click",
+      this.onButtonClick.bind(this)
+    );
+  }
+
+  onButtonClick() {
+    if (!this.open) {
+      this.toggle(!this.open);
+    }
+  }
+
+  toggle(open) {
+    // if the state is already set as requested, do nothing
+    if (open === this.open) {
+      return;
+    }
+    // update state
+    this.open = open;
+    // update DOM
+    this.controllerElementButton.setAttribute("aria-expanded", `${open}`);
+    console.log(this.controlledElement);
+    console.log(this.open);
+    if (open) {
+      this.controlledElement.removeAttribute("hidden");
+      this.controlledElement.nextElementSibling.removeAttribute("hidden");
+      this.controlledElement.parentElement.parentElement.classList.add(
+        "accordion-card"
+      );
+      this.controlledElementImage.removeAttribute("hidden");
+      this.closeOtherOpenAccordions();
+    } else {
+      this.controlledElement.setAttribute("hidden", "");
+      this.controlledElement.nextElementSibling.setAttribute("hidden", "");
+      this.controlledElement.parentElement.parentElement.classList.remove(
+        "accordion-card"
+      );
+      this.controlledElementImage.setAttribute("hidden", "");
+    }
+  }
+
+  openPanel() {
+    this.toggle(true);
+  }
+
+  close() {
+    this.toggle(false);
+  }
+
+  closeOtherOpenAccordions() {
+    openAccordions.push(this);
+    if (openAccordions.length > 0) {
+      const tempOpenAccordions = [];
+      openAccordions.forEach((accordion, index) => {
+        if (accordion.controlledElementId == this.controlledElementId) {
+          tempOpenAccordions.push(accordion);
+        } else {
+          accordion.close();
+        }
+      });
+      openAccordions = tempOpenAccordions;
+    }
+  }
+}
+
+// initialize all accordions
+const allAccordions = document.querySelectorAll(".accordion h3");
+const AllAccordionObjects = [];
+allAccordions.forEach((accordionElement, index) => {
+  const accordion = new Accordion(accordionElement);
+  AllAccordionObjects.push(accordion);
+  if (!index) {
+    openAccordions.push(accordion);
+  }
+});
+
 //This is the functionality for controlling the stages of the setup process
 
 //get all the buttons
@@ -267,7 +298,6 @@ class CheckBox {
     this.checkboxButton.classList.add("accordion-checked");
     this.updateProgress("checked");
     setTimeout(() => {
-      
       this.switchFocusToNextUncheckedCheckbox();
     }, 100);
   }
@@ -303,7 +333,6 @@ class CheckBox {
     });
     CheckBox.allCheckboxes[emptyCheckBoxIndex].checkboxButton.focus();
     AllAccordionObjects[emptyCheckBoxIndex].openPanel();
-   
   }
 
   switchFocusToPreviousCheckbox() {
