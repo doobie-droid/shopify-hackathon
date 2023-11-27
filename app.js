@@ -14,6 +14,7 @@ class Menu {
     this.overlay.addEventListener("click", this.closeMenu.bind(this));
     this.menuItems.forEach((item, index) => {
       const menu = this;
+      item.addEventListener("click", this.visitShopifyAdmin.bind(this));
       item.addEventListener("keyup", (event) => {
         menu.navigateMenu(event.key, index);
       });
@@ -70,7 +71,11 @@ class Menu {
       });
     }
   }
+  visitShopifyAdmin() {
+    window.location.href = "https://admin.shopify.com/";
+  }
   navigateMenu(keyPress, index) {
+    console.log(keyPress);
     switch (keyPress) {
       case "ArrowUp":
       case "Up":
@@ -96,6 +101,8 @@ class Menu {
       case "Esc":
         this.closeMenu();
         break;
+      case "Enter":
+        window.location.href = "https://admin.shopify.com/";
     }
   }
 }
@@ -118,65 +125,26 @@ const modalCloserFunction = function () {
 closeModal.addEventListener("click", modalCloserFunction);
 closeModal2.addEventListener("click", modalCloserFunction);
 
-// //This is the functionality for opening and closing the setup Accordion Menu
-// class AccordionMenu {
-//   constructor(menuPopupButton) {
-//     this.menuPopupButton = menuPopupButton;
-//     this.menuPopupButton.addEventListener("click", this.toggleMenu.bind(this));
-//   }
-
-//   openMenu() { 
-//     this.menuPopupButton.setAttribute("aria-expanded", "true");
-//     this.menuPopupButton.parentElement.classList.add("menu-active");
-//   }
-
-//   closeMenu() {
-//     this.menuPopupButton.setAttribute("aria-expanded", "false");
-//     this.menuPopupButton.parentElement.classList.remove("menu-active");
-//   }
-
-//   toggleMenu() { 
-//     const open = this.menuPopupButton.getAttribute("aria-expanded") === "true";
-
-//     if (open) {
-//       this.closeMenu();
-//     } else {
-//       this.openMenu();
-//     }
-//   }
-// }
-
-// const dropDown = document.querySelector("#menu-dropdown");
-// const AccordionMenuObject = new AccordionMenu(dropDown);
-
 //This is the functionality used for controlling the accordion menu
-let openAccordions = [];
 class Accordion {
+  static openAccordions = [];
+  static accordionCount = 0;
+  static allAccordions = [];
   constructor(domNode) {
+    this.accordionNumber = Accordion.accordionCount++;
+    if (!this.accordionNumber) {
+      Accordion.openAccordions.push(this);
+    }
+    Accordion.allAccordions.push(this);
     this.controllerElement = domNode;
-    this.controllerElementButton = this.controllerElement.querySelector(
-      "span[aria-expanded]"
-    );
-
     this.controlledElementId =
-      this.controllerElementButton.getAttribute("aria-controls");
-
+      this.controllerElement.getAttribute("aria-controls");
     this.controlledElement = document.getElementById(this.controlledElementId);
 
-    console.log(this.controlledElementId);
-    const controlledIndex = this.controlledElementId.charAt(
-      this.controlledElementId.length - 1
-    );
-    console.log(controlledIndex);
-    this.controlledElementImage = document.querySelector(
-      `#accordion-image-${controlledIndex}`
-    );
-
-    this.open =
-      this.controllerElementButton.getAttribute("aria-expanded") === "true";
+    this.open = this.controllerElement.getAttribute("aria-expanded") === "true";
 
     // add event listeners
-    this.controllerElementButton.addEventListener(
+    this.controllerElement.addEventListener(
       "click",
       this.onButtonClick.bind(this)
     );
@@ -189,31 +157,16 @@ class Accordion {
   }
 
   toggle(open) {
-    // if the state is already set as requested, do nothing
     if (open === this.open) {
       return;
     }
-    // update state
     this.open = open;
-    // update DOM
-    this.controllerElementButton.setAttribute("aria-expanded", `${open}`);
-    console.log(this.controlledElement);
-    console.log(this.open);
+    this.controllerElement.setAttribute("aria-expanded", `${open}`);
     if (open) {
-      this.controlledElement.removeAttribute("hidden");
-      this.controlledElement.nextElementSibling.removeAttribute("hidden");
-      this.controlledElement.parentElement.parentElement.classList.add(
-        "accordion-card"
-      );
-      this.controlledElementImage.removeAttribute("hidden");
+      this.controlledElement.classList.add("accordion-active");
       this.closeOtherOpenAccordions();
     } else {
-      this.controlledElement.setAttribute("hidden", "");
-      this.controlledElement.nextElementSibling.setAttribute("hidden", "");
-      this.controlledElement.parentElement.parentElement.classList.remove(
-        "accordion-card"
-      );
-      this.controlledElementImage.setAttribute("hidden", "");
+      this.controlledElement.classList.remove("accordion-active");
     }
   }
 
@@ -226,37 +179,66 @@ class Accordion {
   }
 
   closeOtherOpenAccordions() {
-    openAccordions.push(this);
-    if (openAccordions.length > 0) {
+    Accordion.openAccordions.push(this);
+    if (Accordion.openAccordions.length > 0) {
       const tempOpenAccordions = [];
-      openAccordions.forEach((accordion, index) => {
+      Accordion.openAccordions.forEach((accordion, index) => {
         if (accordion.controlledElementId == this.controlledElementId) {
           tempOpenAccordions.push(accordion);
         } else {
           accordion.close();
         }
       });
-      openAccordions = tempOpenAccordions;
+      Accordion.openAccordions = tempOpenAccordions;
     }
   }
 }
 
 // initialize all accordions
-const allAccordions = document.querySelectorAll(".accordion h3");
-const AllAccordionObjects = [];
+const allAccordions = document.querySelectorAll(".accordion-header-hidden");
 allAccordions.forEach((accordionElement, index) => {
-  const accordion = new Accordion(accordionElement);
-  AllAccordionObjects.push(accordion);
-  if (!index) {
-    openAccordions.push(accordion);
-  }
+  new Accordion(accordionElement);
 });
+
+//This is the functionality for opening and closing the setup Accordion Menu
+class AccordionMenu {
+  constructor(menuPopupButton) {
+    this.menuPopupButton = menuPopupButton;
+    this.menuPopupButton.addEventListener("click", this.toggleMenu.bind(this));
+    const menuId = this.menuPopupButton.getAttribute("aria-controls");
+    this.menu = document.querySelector(`#${menuId}`);
+  }
+
+  openMenu() {
+    this.menuPopupButton.setAttribute("aria-expanded", "true");
+    this.menu.classList.add("menu-active");
+    this.menuPopupButton.classList.add("dropdown-activated");
+  }
+
+  closeMenu() {
+    this.menuPopupButton.setAttribute("aria-expanded", "false");
+    this.menu.classList.remove("menu-active");
+    this.menuPopupButton.classList.remove("dropdown-activated");
+  }
+
+  toggleMenu() {
+    console.log("toggle");
+    const open = this.menuPopupButton.getAttribute("aria-expanded") === "true";
+
+    if (open) {
+      this.closeMenu();
+    } else {
+      this.openMenu();
+    }
+  }
+}
+
+const dropDown = document.querySelector("#menu-dropdown");
+const AccordionMenuObject = new AccordionMenu(dropDown);
 
 //This is the functionality for controlling the stages of the setup process
 
-//get all the buttons
-
-const checkboxButtons = document.querySelectorAll(".accordion-icon");
+const checkboxButtons = document.querySelectorAll(".accordion-checkbox");
 class CheckBox {
   static progress = 0;
   static allCheckboxes = [];
@@ -295,11 +277,17 @@ class CheckBox {
 
   checkCheckbox() {
     this.checkboxButton.setAttribute("aria-checked", "true");
-    this.checkboxButton.classList.add("accordion-checked");
-    this.updateProgress("checked");
+
+    this.checkboxButton.classList.add("accordion-checking");
+
     setTimeout(() => {
-      this.switchFocusToNextUncheckedCheckbox();
+      this.checkboxButton.classList.remove("accordion-checking");
+      this.checkboxButton.classList.add("accordion-checked");
     }, 100);
+
+    this.updateProgress("checked");
+
+    this.switchFocusToNextUncheckedCheckbox();
   }
 
   uncheckCheckbox() {
@@ -332,7 +320,7 @@ class CheckBox {
       }
     });
     CheckBox.allCheckboxes[emptyCheckBoxIndex].checkboxButton.focus();
-    AllAccordionObjects[emptyCheckBoxIndex].openPanel();
+    Accordion.allAccordions[emptyCheckBoxIndex].openPanel();
   }
 
   switchFocusToPreviousCheckbox() {
@@ -379,10 +367,4 @@ checkboxButtons.forEach((checkboxButton) => {
   new CheckBox(checkboxButton);
 });
 
-//if the button class was toggled on,
-//go through the list for any button that has not been toggled and focus on them
-//if there are no buttons, then just close that tab
 
-//every toggling of the button clicked class increases the progress value
-
-const progressBar = document.querySelector("progress");

@@ -142,7 +142,8 @@
                 </div>
                 <li>
                     <button role="menuitem" class="profile__menu--menuitem profile__menu--storemenuitem">
-                        <svg width="41" height="40" viewBox="0 0 21 20" fill="black" xmlns="http://www.w3.org/2000/svg">
+                        <svg aria-hidden="true" width="41" height="40" viewBox="0 0 21 20" fill="black"
+                            xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" clip-rule="evenodd"
                                 d="M13.757 3H7.24302C6.85944 3 6.4971 3.17611 6.26012 3.47772L3.87394 6.51468C3.63169 6.823 3.5 7.20375 3.5 7.59586V8.25C3.5 9.31867 4.10958 10.245 5 10.7001V15.25C5 16.2165 5.7835 17 6.75 17H14.25C15.2165 17 16 16.2165 16 15.25V10.7001C16.8904 10.245 17.5 9.31867 17.5 8.25V7.76879C17.5 7.26465 17.3307 6.77511 17.0192 6.3787L14.7399 3.47772C14.5029 3.17611 14.1406 3 13.757 3ZM13.5 15.5H14.25C14.3881 15.5 14.5 15.3881 14.5 15.25V11C13.712 11 13.0014 10.6686 12.5 10.1375C11.9986 10.6686 11.288 11 10.5 11C9.71199 11 9.00138 10.6686 8.5 10.1375C7.99862 10.6686 7.28801 11 6.5 11V15.25C6.5 15.3881 6.61193 15.5 6.75 15.5H10.5V13C10.5 12.4477 10.9477 12 11.5 12H12.5C13.0523 12 13.5 12.4477 13.5 13V15.5ZM6.5 9.5H6.25C5.55964 9.5 5 8.94036 5 8.25V7.59586C5 7.53985 5.01881 7.48545 5.05342 7.44141L7.36453 4.5H13.6355L15.8397 7.30543C15.9436 7.43757 16 7.60075 16 7.76879V8.25C16 8.94036 15.4404 9.5 14.75 9.5H14.5C13.8096 9.5 13.25 8.94036 13.25 8.25V7.75C13.25 7.33579 12.9142 7 12.5 7C12.0858 7 11.75 7.33579 11.75 7.75V8.25C11.75 8.94036 11.1904 9.5 10.5 9.5C9.80964 9.5 9.25 8.94036 9.25 8.25V7.75C9.25 7.33579 8.91421 7 8.5 7C8.08579 7 7.75 7.33579 7.75 7.75V8.25C7.75 8.94036 7.19036 9.5 6.5 9.5Z"
                                 fill="black" />
@@ -154,10 +155,12 @@
             <div role="presentation" class="profile__menu--dividerline"></div>
             <div class="profile__menu--helpsection">
                 <li>
-                    <button role="menuitem" class="profile__menu--menuitem">Help Center</button>
+                    <button role="menuitem" class="profile__menu--menuitem " aria-label="Help Center Menu Item">Help
+                        Center</button>
                 </li>
                 <li>
-                    <button role="menuitem" class="profile__menu--menuitem">Changelog</button>
+                    <button role="menuitem" class="profile__menu--menuitem"
+                        >Changelog</button>
                 </li>
                 <li>
                     <button role="menuitem" class="profile__menu--menuitem">Community forums</button>
@@ -237,7 +240,7 @@
 
 
                 </div>
-                <button class="setup__header--dropdown" id="menu-dropdown" aria-haspopup="true" aria-expanded="false"
+                <button class="setup__header--dropdown dropdown-activated" id="menu-dropdown" aria-haspopup="true" aria-expanded="true"
                     aria-controls="setup__menu" aria-label="Setup Guide Menu">
                     <svg aria-hidden="true" width="41" height="40" viewBox="0 0 21 20" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
@@ -248,19 +251,36 @@
                 </button>
 
             </div>
-            <div class="setup__body menu-active">
-                <div class="setup__menuitem accordion-active">
-                    <div class="setup__menuitem--content">
+            <div class="setup__body menu-active" id="setup__menu">
+                <div class="setup__menuitem accordion-active " id="accordion1">
+                    <div class="setup__menuitem--content menu-active">
                         <button role="checkbox" aria-checked="false" class="accordion-checkbox"
                             aria-label="Customize your online store">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 32 32"
-                                fill="none">
+                            <svg class="base-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="40" height="40"
+                                viewBox="0 0 32 32" fill="none">
                                 <circle cx="16" cy="16" r="12" stroke="#8a8a8a" stroke-width="2.5"
                                     stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4 6" />
                             </svg>
+                            <svg class="loading-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 28 28"
+                                fill="none">
+                                <path
+                                    d="M26 14C26 16.3734 25.2962 18.6935 23.9776 20.6668C22.6591 22.6402 20.7849 24.1783 18.5922 25.0866C16.3995 25.9948 13.9867 26.2324 11.6589 25.7694C9.33114 25.3064 7.19295 24.1635 5.51472 22.4853C3.83649 20.8071 2.6936 18.6689 2.23058 16.3411C1.76755 14.0133 2.00519 11.6005 2.91345 9.4078C3.8217 7.21509 5.35977 5.34094 7.33316 4.02236C9.30655 2.70379 11.6266 2 14 2"
+                                    stroke="#1c181d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                            <svg aria-hidden="true" class="checked-icon" width="40" height="40" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="12" cy="12" r="10" fill="#1c181d"></circle>
+                                <path
+                                    d="M17.2738 8.52629C17.6643 8.91682 17.6643 9.54998 17.2738 9.94051L11.4405 15.7738C11.05 16.1644 10.4168 16.1644 10.0263 15.7738L7.3596 13.1072C6.96908 12.7166 6.96908 12.0835 7.3596 11.693C7.75013 11.3024 8.38329 11.3024 8.77382 11.693L10.7334 13.6525L15.8596 8.52629C16.2501 8.13577 16.8833 8.13577 17.2738 8.52629Z"
+                                    fill="#fff"></path>
+                            </svg>
                         </button>
+                        <div class="accordion-header-hidden" aria-controls="accordion1" aria-expanded="true">
+                            <span>Customize your online store</span>
+                        </div>
+
                         <div class="accordion-content">
-                            <div class="accordion-header"> 
+                            <div class="accordion-header">
                                 Customize your online store
                             </div>
                             <div class="accordion-description">
@@ -275,13 +295,213 @@
                         </div>
                     </div>
                     <div class="setup__menuitem--image">
-                        <img src="https://crushingit.tech/hackathon-assets/customise-store.png" alt="">
+                        <img src="https://crushingit.tech/hackathon-assets/customise-store.png"
+                            alt="Image of a customized store">
                     </div>
                 </div>
-                <div class="setup__menuitem">2</div>
-                <div class="setup__menuitem">3</div>
-                <div class="setup__menuitem">4</div>
-                <div class="setup__menuitem">5</div>
+                <div class="setup__menuitem " id="accordion2">
+                    <div class="setup__menuitem--content menu-active">
+                        <button role="checkbox" aria-checked="false" class="accordion-checkbox"
+                            aria-label="Add your first product">
+                             <svg class="base-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="40"
+                                 height="40" viewBox="0 0 32 32" fill="none">
+                                 <circle cx="16" cy="16" r="12" stroke="#8a8a8a" stroke-width="2.5"
+                                     stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4 6" />
+                             </svg>
+                             <svg class="loading-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="40"
+                                 height="40" viewBox="0 0 28 28" fill="none">
+                                 <path
+                                     d="M26 14C26 16.3734 25.2962 18.6935 23.9776 20.6668C22.6591 22.6402 20.7849 24.1783 18.5922 25.0866C16.3995 25.9948 13.9867 26.2324 11.6589 25.7694C9.33114 25.3064 7.19295 24.1635 5.51472 22.4853C3.83649 20.8071 2.6936 18.6689 2.23058 16.3411C1.76755 14.0133 2.00519 11.6005 2.91345 9.4078C3.8217 7.21509 5.35977 5.34094 7.33316 4.02236C9.30655 2.70379 11.6266 2 14 2"
+                                     stroke="#1c181d" stroke-width="2.5" stroke-linecap="round"
+                                     stroke-linejoin="round" />
+                             </svg>
+                             <svg aria-hidden="true" class="checked-icon" width="40" height="40" viewBox="0 0 24 24"
+                                 fill="none" xmlns="http://www.w3.org/2000/svg">
+                                 <circle cx="12" cy="12" r="10" fill="#1c181d"></circle>
+                                 <path
+                                     d="M17.2738 8.52629C17.6643 8.91682 17.6643 9.54998 17.2738 9.94051L11.4405 15.7738C11.05 16.1644 10.4168 16.1644 10.0263 15.7738L7.3596 13.1072C6.96908 12.7166 6.96908 12.0835 7.3596 11.693C7.75013 11.3024 8.38329 11.3024 8.77382 11.693L10.7334 13.6525L15.8596 8.52629C16.2501 8.13577 16.8833 8.13577 17.2738 8.52629Z"
+                                     fill="#fff"></path>
+                             </svg>
+                        </button>
+                        <div class="accordion-header-hidden" aria-controls="accordion2" aria-expanded="false">
+                            <span>Add your first product</span>
+                        </div>
+
+                        <div class="accordion-content">
+                            <div class="accordion-header">
+                                Add your first product
+                            </div>
+                            <div class="accordion-description">
+                                Write a description, add photos, and set pricing for the products you plan to sell.
+                                Learn more <a
+                                    href="https://help.shopify.com/en/manual/products/add-update-products">Learn
+                                    more</a>
+                            </div>
+                            <div class="setup__guide--buttongroup">
+                                <button class="setup__guide--button">
+                                    Add product
+                                </button>
+                                <button class="setup__guide--button-light">
+                                    Import product
+                                </button>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <div class="setup__menuitem--image">
+                        <img src="https://crushingit.tech/hackathon-assets/product.png"
+                            alt="Image of goods sold by stores">
+                    </div>
+                </div>
+                <div class="setup__menuitem " id="accordion3">
+                    <div class="setup__menuitem--content menu-active">
+                        <button role="checkbox" aria-checked="false" class="accordion-checkbox"
+                            aria-label="Add a custom domain">
+                            <svg class="base-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="40"
+                                height="40" viewBox="0 0 32 32" fill="none">
+                                <circle cx="16" cy="16" r="12" stroke="#8a8a8a" stroke-width="2.5"
+                                    stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4 6" />
+                            </svg>
+                            <svg class="loading-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="40"
+                                height="40" viewBox="0 0 28 28" fill="none">
+                                <path
+                                    d="M26 14C26 16.3734 25.2962 18.6935 23.9776 20.6668C22.6591 22.6402 20.7849 24.1783 18.5922 25.0866C16.3995 25.9948 13.9867 26.2324 11.6589 25.7694C9.33114 25.3064 7.19295 24.1635 5.51472 22.4853C3.83649 20.8071 2.6936 18.6689 2.23058 16.3411C1.76755 14.0133 2.00519 11.6005 2.91345 9.4078C3.8217 7.21509 5.35977 5.34094 7.33316 4.02236C9.30655 2.70379 11.6266 2 14 2"
+                                    stroke="#1c181d" stroke-width="2.5" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                            <svg aria-hidden="true" class="checked-icon" width="40" height="40" viewBox="0 0 24 24"
+                                fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="12" cy="12" r="10" fill="#1c181d"></circle>
+                                <path
+                                    d="M17.2738 8.52629C17.6643 8.91682 17.6643 9.54998 17.2738 9.94051L11.4405 15.7738C11.05 16.1644 10.4168 16.1644 10.0263 15.7738L7.3596 13.1072C6.96908 12.7166 6.96908 12.0835 7.3596 11.693C7.75013 11.3024 8.38329 11.3024 8.77382 11.693L10.7334 13.6525L15.8596 8.52629C16.2501 8.13577 16.8833 8.13577 17.2738 8.52629Z"
+                                    fill="#fff"></path>
+                            </svg>
+                        </button>
+                        <div class="accordion-header-hidden" aria-controls="accordion3" aria-expanded="false">
+                            <span>Add a custom domain</span>
+                        </div>
+
+                        <div class="accordion-content">
+                            <div class="accordion-header">
+                                Add a custom domain
+                            </div>
+                            <div class="accordion-description">
+                                Your current domain is 222219.myshopify.com but you can add a custom domain to help
+                                customers find your online store. <a
+                                    href="https://help.shopify.com/en/manual/domains">Learn
+                                    more</a>
+                            </div>
+                            <button class="setup__guide--button">
+                                Add domain
+                            </button>
+
+                        </div>
+                    </div>
+                    <div class="setup__menuitem--image">
+                        <img src="https://crushingit.tech/hackathon-assets/website.png" alt="Image of domains for sale">
+                    </div>
+                </div>
+                <div class="setup__menuitem " id="accordion4">
+                    <div class="setup__menuitem--content menu-active">
+                        <button role="checkbox" aria-checked="false" class="accordion-checkbox"
+                            aria-label="Name your store">
+                            <svg class="base-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="40"
+                                height="40" viewBox="0 0 32 32" fill="none">
+                                <circle cx="16" cy="16" r="12" stroke="#8a8a8a" stroke-width="2.5"
+                                    stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4 6" />
+                            </svg>
+                            <svg class="loading-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="40"
+                                height="40" viewBox="0 0 28 28" fill="none">
+                                <path
+                                    d="M26 14C26 16.3734 25.2962 18.6935 23.9776 20.6668C22.6591 22.6402 20.7849 24.1783 18.5922 25.0866C16.3995 25.9948 13.9867 26.2324 11.6589 25.7694C9.33114 25.3064 7.19295 24.1635 5.51472 22.4853C3.83649 20.8071 2.6936 18.6689 2.23058 16.3411C1.76755 14.0133 2.00519 11.6005 2.91345 9.4078C3.8217 7.21509 5.35977 5.34094 7.33316 4.02236C9.30655 2.70379 11.6266 2 14 2"
+                                    stroke="#1c181d" stroke-width="2.5" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                            <svg aria-hidden="true" class="checked-icon" width="40" height="40" viewBox="0 0 24 24"
+                                fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="12" cy="12" r="10" fill="#1c181d"></circle>
+                                <path
+                                    d="M17.2738 8.52629C17.6643 8.91682 17.6643 9.54998 17.2738 9.94051L11.4405 15.7738C11.05 16.1644 10.4168 16.1644 10.0263 15.7738L7.3596 13.1072C6.96908 12.7166 6.96908 12.0835 7.3596 11.693C7.75013 11.3024 8.38329 11.3024 8.77382 11.693L10.7334 13.6525L15.8596 8.52629C16.2501 8.13577 16.8833 8.13577 17.2738 8.52629Z"
+                                    fill="#fff"></path>
+                            </svg>
+                        </button>
+                        <div class="accordion-header-hidden" aria-controls="accordion4" aria-expanded="false">
+                            <span>Name your store</span>
+                        </div>
+
+                        <div class="accordion-content">
+                            <div class="accordion-header">
+                                Name your store
+                            </div>
+                            <div class="accordion-description">
+                                Your temporary store name is currently Davii collections. The store name appears in your
+                                admin and your online store. <a
+                                    href="https://help.shopify.com/en/manual/intro-to-shopify/initial-setup/setup-business-settings#set-or-change-your-online-store-name-and-legal-business-name">Learn
+                                    more</a>
+                            </div>
+                            <button class="setup__guide--button">
+                                Name Store
+                            </button>
+
+                        </div>
+                    </div>
+                    <div class="setup__menuitem--image">
+                        <img src="https://crushingit.tech/hackathon-assets/name-store.png"
+                            alt="Image of examples of stores">
+                    </div>
+                </div>
+                <div class="setup__menuitem  " id="accordion5">
+                    <div class="setup__menuitem--content menu-active">
+                        <button role="checkbox" aria-checked="false" class="accordion-checkbox"
+                            aria-label="Set up a payment provider">
+                             <svg class="base-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="40"
+                                 height="40" viewBox="0 0 32 32" fill="none">
+                                 <circle cx="16" cy="16" r="12" stroke="#8a8a8a" stroke-width="2.5"
+                                     stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4 6" />
+                             </svg>
+                             <svg class="loading-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="40"
+                                 height="40" viewBox="0 0 28 28" fill="none">
+                                 <path
+                                     d="M26 14C26 16.3734 25.2962 18.6935 23.9776 20.6668C22.6591 22.6402 20.7849 24.1783 18.5922 25.0866C16.3995 25.9948 13.9867 26.2324 11.6589 25.7694C9.33114 25.3064 7.19295 24.1635 5.51472 22.4853C3.83649 20.8071 2.6936 18.6689 2.23058 16.3411C1.76755 14.0133 2.00519 11.6005 2.91345 9.4078C3.8217 7.21509 5.35977 5.34094 7.33316 4.02236C9.30655 2.70379 11.6266 2 14 2"
+                                     stroke="#1c181d" stroke-width="2.5" stroke-linecap="round"
+                                     stroke-linejoin="round" />
+                             </svg>
+                             <svg aria-hidden="true" class="checked-icon" width="40" height="40" viewBox="0 0 24 24"
+                                 fill="none" xmlns="http://www.w3.org/2000/svg">
+                                 <circle cx="12" cy="12" r="10" fill="#1c181d"></circle>
+                                 <path
+                                     d="M17.2738 8.52629C17.6643 8.91682 17.6643 9.54998 17.2738 9.94051L11.4405 15.7738C11.05 16.1644 10.4168 16.1644 10.0263 15.7738L7.3596 13.1072C6.96908 12.7166 6.96908 12.0835 7.3596 11.693C7.75013 11.3024 8.38329 11.3024 8.77382 11.693L10.7334 13.6525L15.8596 8.52629C16.2501 8.13577 16.8833 8.13577 17.2738 8.52629Z"
+                                     fill="#fff"></path>
+                             </svg>
+                        </button>
+                        <div class="accordion-header-hidden" aria-controls="accordion5" aria-expanded="false">
+                            <span>Set up a payment provider</span>
+                        </div>
+
+                        <div class="accordion-content">
+                            <div class="accordion-header">
+                                Set up a payment provider
+                            </div>
+                            <div class="accordion-description">
+                                Choose a payment provider to start accepting payments. You&apos;ll need to create an
+                                account
+                                with the payment provider and set it up with your Shopify store. <a
+                                    href="https://help.shopify.com/en/manual/payments">Learn
+                                    more</a>
+                            </div>
+                            <button class="setup__guide--button">
+                                Set up payment
+                            </button>
+
+                        </div>
+                    </div>
+                    <div class="setup__menuitem--image">
+                        <img src="https://crushingit.tech/hackathon-assets/payment.png"
+                            alt="Image of payment providers">
+                    </div>
+                </div>
             </div>
         </section>
     </section>
