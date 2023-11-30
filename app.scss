@@ -554,7 +554,8 @@ body {
   background-color: #1a1a1a;
 
   @media screen and (max-width: 840px) {
-    width: auto;
+    width: 90vw;
+    margin: 0 auto;
     gap: 16px;
   }
 
@@ -664,7 +665,8 @@ body {
     text-decoration: underline;
   }
   @media screen and (max-width: 840px) {
-    width: auto;
+    width: 90vw;
+    margin: 0 auto;
     gap: 16px;
   }
 
@@ -954,8 +956,7 @@ body {
   }
 
   &:focus {
-
-    svg{
+    svg {
       outline: 2px solid var(--color-state-focused);
       border-radius: 4px;
     }
@@ -995,7 +996,6 @@ body {
   .checked-icon {
     display: flex;
     animation: zoomIn 50ms ease-in-out;
-    
   }
 }
 
